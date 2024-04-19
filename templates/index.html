@@ -1,6 +1,6 @@
 {% extends "base.html" %}
-
 {% load static %}
+{% load  blog_tag %}
 
 {% block body %}
 <div class="post-area banner-post-area pt-4 pd-bottom-70">
@@ -9,43 +9,42 @@
             <div class="col-lg-6">
                 <div class="single-post-wrap style-overlay">
                     <div class="thumb">
-                        <img src="{% static 'img/post/24.png' %}" alt="img">
-                        <a class="tag-base tag-blue" href="cat-tech.html">Tech</a>
+                        <img src="{{posts.0.image.url}}" alt="img">
+                        <a class="tag-base tag-blue" href="cat-tech.html">{{ posts.0.category.first.name }}</a>
                     </div>
                     <div class="details">
                         <div class="post-meta-single">
-                            <p><i class="fa fa-clock-o"></i>December 26, 2018</p>
+                            <p><i class="fa fa-clock-o"></i>{{posts.0.published_date}}</p>
                         </div>
-                        <h5 class="title"><a href="blog-details.html">IPL bubble: BT bands to enforce distancing,
-                                others’ rooms out of bounds</a></h5>
+                        <h5 class="title"><a href="blog-details.html">{{posts.0.title}}</a></h5>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-6 col-sm-6">
                         <div class="single-post-wrap style-overlay">
                             <div class="thumb">
-                                <img src="{% static 'img/post/24.png' %}" alt="img">
+                                <img src="{{posts.1.image.url}}" alt="img">
+                                <a class="tag-base tag-blue" href="cat-tech.html">{{ posts.1.category.last.name }}</a>
                             </div>
                             <div class="details">
                                 <div class="post-meta-single">
-                                    <p><i class="fa fa-clock-o"></i>December 26, 2018</p>
+                                    <p><i class="fa fa-clock-o"></i>{{posts.1.published_date}}</p>
                                 </div>
-                                <h6 class="title"><a href="blog-details.html">Lifting Weights Makes Your Nervous</a>
-                                </h6>
+                                <h5 class="title"><a href="blog-details.html">{{posts.1.title}}</a></h5>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6 col-sm-6">
                         <div class="single-post-wrap style-overlay">
                             <div class="thumb">
-                                <img src="{% static 'img/post/24.png' %}" alt="img">
+                                <img src="{{posts.2.image.url}}" alt="img">
+                                <a class="tag-base tag-blue" href="cat-tech.html">{{ posts.2.category.first.name }}</a>
                             </div>
                             <div class="details">
                                 <div class="post-meta-single">
-                                    <p><i class="fa fa-clock-o"></i>December 26, 2018</p>
+                                    <p><i class="fa fa-clock-o"></i>{{posts.2.published_date}}</p>
                                 </div>
-                                <h6 class="title"><a href="blog-details.html">New, Remote Weight-Loss Method </a>
-                                </h6>
+                                <h5 class="title"><a href="blog-details.html">{{posts.2.title}}</a></h5>
                             </div>
                         </div>
                     </div>
@@ -55,132 +54,25 @@
                 <div class="section-title style-two mb-4">
                     <h6 class="title">Latest News</h6>
                 </div>
+                {% for post in posts|slice:":7" %}
                 <div class="single-post-list-wrap">
                     <div class="media">
                         <div class="media-left">
-                            <img src="{% static 'img/post/list/1.png' %}" alt="img">
+                            <img src="{{post.image.url}}" alt="img" width="140px" height="82px">
                         </div>
                         <div class="media-body">
                             <div class="details">
                                 <div class="post-meta-single">
                                     <ul>
-                                        <li><i class="fa fa-clock-o"></i>08.22.2023</li>
+                                        <li><i class="fa fa-clock-o"></i>{{post.published_date}}</li>
                                     </ul>
                                 </div>
-                                <h6 class="title"><a href="blog-details.html">Himachal Pradesh rules in order to
-                                        allow tourists </a></h6>
+                                <h6 class="title"><a href="blog-details.html">{{post.title}}</a></h6>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="single-post-list-wrap">
-                    <div class="media">
-                        <div class="media-left">
-                            <img src="{% static 'img/post/list/2.png' %}" alt="img">
-                        </div>
-                        <div class="media-body">
-                            <div class="details">
-                                <div class="post-meta-single">
-                                    <ul>
-                                        <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                    </ul>
-                                </div>
-                                <h6 class="title"><a href="blog-details.html">Online registration, booking for
-                                        Vaishno Devi </a></h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-post-list-wrap">
-                    <div class="media">
-                        <div class="media-left">
-                            <img src="{% static 'img/post/list/3.png' %}" alt="img">
-                        </div>
-                        <div class="media-body">
-                            <div class="details">
-                                <div class="post-meta-single">
-                                    <ul>
-                                        <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                    </ul>
-                                </div>
-                                <h6 class="title"><a href="blog-details.html">Detecting technologies in airports
-                                        this year</a></h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-post-list-wrap">
-                    <div class="media">
-                        <div class="media-left">
-                            <img src="{% static 'img/post/list/4.png' %}" alt="img">
-                        </div>
-                        <div class="media-body">
-                            <div class="details">
-                                <div class="post-meta-single">
-                                    <ul>
-                                        <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                    </ul>
-                                </div>
-                                <h6 class="title"><a href="blog-details.html">The FAA will drone in airports this
-                                        year</a></h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-post-list-wrap">
-                    <div class="media">
-                        <div class="media-left">
-                            <img src="{% static 'img/post/list/5.png' %}" alt="img">
-                        </div>
-                        <div class="media-body">
-                            <div class="details">
-                                <div class="post-meta-single">
-                                    <ul>
-                                        <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                    </ul>
-                                </div>
-                                <h6 class="title"><a href="blog-details.html">Thailand makes it mand-atory for
-                                        tourists to stay</a></h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-post-list-wrap">
-                    <div class="media">
-                        <div class="media-left">
-                            <img src="{% static 'img/post/list/4.png' %}" alt="img">
-                        </div>
-                        <div class="media-body">
-                            <div class="details">
-                                <div class="post-meta-single">
-                                    <ul>
-                                        <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                    </ul>
-                                </div>
-                                <h6 class="title"><a href="blog-details.html">The FAA will drone in airports this
-                                        year</a></h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-post-list-wrap">
-                    <div class="media">
-                        <div class="media-left">
-                            <img src="{% static 'img/post/list/5.png' %}" alt="img">
-                        </div>
-                        <div class="media-body">
-                            <div class="details">
-                                <div class="post-meta-single">
-                                    <ul>
-                                        <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                    </ul>
-                                </div>
-                                <h6 class="title"><a href="blog-details.html">Thailand makes it mand-atory for
-                                        tourists to stay</a></h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
             <div class="col-lg-3 col-sm-6 widget-category">
                 <div class="section-title style-two mb-4">
@@ -256,43 +148,24 @@
                 <div class="post-slider owl-carousel">
                     <div class="item">
                         <div class="trending-post">
+                            {% for post in posts|dictsortreversed:"counted_view"|slice:":3"  %}
                             <div class="single-post-wrap style-overlay">
                                 <div class="thumb">
-                                    <img src="{% static 'img/post/5.png' %}" alt="img">
+                                    <img src="{{post.image.url}}" alt="img" height="170px">
                                 </div>
                                 <div class="details">
                                     <div class="post-meta-single">
-                                        <p><i class="fa fa-clock-o"></i>December 26, 2018</p>
+                                        <p><i class="fa fa-clock-o"></i>{{post.published_date}}</p>
                                     </div>
-                                    <h6 class="title"><a href="blog-details.html">The FAA will test drone </a></h6>
+                                    <h6 class="title"><a href="blog-details.html">{{post.title}}</a></h6>
                                 </div>
                             </div>
-                            <div class="single-post-wrap style-overlay">
-                                <div class="thumb">
-                                    <img src="{% static 'img/post/6.png' %}" alt="img">
-                                </div>
-                                <div class="details">
-                                    <div class="post-meta-single">
-                                        <p><i class="fa fa-clock-o"></i>December 26, 2018</p>
-                                    </div>
-                                    <h6 class="title"><a href="blog-details.html">Flight schedule and quarantine</a>
-                                    </h6>
-                                </div>
-                            </div>
-                            <div class="single-post-wrap style-overlay">
-                                <div class="thumb">
-                                    <img src="{% static 'img/post/7.png' %}" alt="img">
-                                </div>
-                                <div class="details">
-                                    <div class="post-meta-single">
-                                        <p><i class="fa fa-clock-o"></i>December 26, 2018</p>
-                                    </div>
-                                    <h6 class="title"><a href="blog-details.html">Indore bags cleanest city</a></h6>
-                                </div>
-                            </div>
+                            {% endfor %}
                         </div>
                     </div>
-                    <div class="item">
+
+
+                    <!-- <div class="item">
                         <div class="trending-post">
                             <div class="single-post-wrap style-overlay">
                                 <div class="thumb">
@@ -305,31 +178,9 @@
                                     <h6 class="title"><a href="blog-details.html">The FAA will test drone </a></h6>
                                 </div>
                             </div>
-                            <div class="single-post-wrap style-overlay">
-                                <div class="thumb">
-                                    <img src="{% static 'img/post/6.png' %}" alt="img">
-                                </div>
-                                <div class="details">
-                                    <div class="post-meta-single">
-                                        <p><i class="fa fa-clock-o"></i>December 26, 2018</p>
-                                    </div>
-                                    <h6 class="title"><a href="blog-details.html">Flight schedule and quarantine</a>
-                                    </h6>
-                                </div>
-                            </div>
-                            <div class="single-post-wrap style-overlay">
-                                <div class="thumb">
-                                    <img src="{% static 'img/post/7.png' %}" alt="img">
-                                </div>
-                                <div class="details">
-                                    <div class="post-meta-single">
-                                        <p><i class="fa fa-clock-o"></i>December 26, 2018</p>
-                                    </div>
-                                    <h6 class="title"><a href="blog-details.html">Indore bags cleanest city</a></h6>
-                                </div>
-                            </div>
+                            
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="col-lg-3 col-sm-6">
@@ -338,6 +189,27 @@
                 </div>
                 <div class="post-slider owl-carousel">
                     <div class="item">
+                        {% for post in posts|slice:":5"  %}
+                        <div class="single-post-list-wrap">
+                            <div class="media">
+                                <div class="media-left">
+                                    <img src="{{post.image.url}}" alt="img" >
+                                </div>
+                                <div class="media-body">
+                                    <div class="details">
+                                        <div class="post-meta-single">
+                                            <ul>
+                                                <li><i class="fa fa-clock-o"></i>{{post.published_date}}</li>
+                                            </ul>
+                                        </div>
+                                        <h6 class="title"><a href="blog-details.html">{{post.title}}</a></h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <!-- <div class="item">
                         <div class="single-post-list-wrap">
                             <div class="media">
                                 <div class="media-left">
@@ -356,171 +228,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="single-post-list-wrap">
-                            <div class="media">
-                                <div class="media-left">
-                                    <img src="{% static 'img/post/list/2.png' %}" alt="img">
-                                </div>
-                                <div class="media-body">
-                                    <div class="details">
-                                        <div class="post-meta-single">
-                                            <ul>
-                                                <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                            </ul>
-                                        </div>
-                                        <h6 class="title"><a href="blog-details.html">Online registration, booking
-                                                for Vaishno Devi </a></h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single-post-list-wrap">
-                            <div class="media">
-                                <div class="media-left">
-                                    <img src="{% static 'img/post/list/3.png' %}" alt="img">
-                                </div>
-                                <div class="media-body">
-                                    <div class="details">
-                                        <div class="post-meta-single">
-                                            <ul>
-                                                <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                            </ul>
-                                        </div>
-                                        <h6 class="title"><a href="blog-details.html">Detecting technologies in
-                                                airports this year</a></h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single-post-list-wrap">
-                            <div class="media">
-                                <div class="media-left">
-                                    <img src="{% static 'img/post/list/4.png' %}" alt="img">
-                                </div>
-                                <div class="media-body">
-                                    <div class="details">
-                                        <div class="post-meta-single">
-                                            <ul>
-                                                <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                            </ul>
-                                        </div>
-                                        <h6 class="title"><a href="blog-details.html">The FAA will drone detect-ing
-                                                in airports this year</a></h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single-post-list-wrap">
-                            <div class="media">
-                                <div class="media-left">
-                                    <img src="{% static 'img/post/list/5.png' %}" alt="img">
-                                </div>
-                                <div class="media-body">
-                                    <div class="details">
-                                        <div class="post-meta-single">
-                                            <ul>
-                                                <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                            </ul>
-                                        </div>
-                                        <h6 class="title"><a href="blog-details.html">Thailand makes it mand-atory
-                                                for tourists to stay</a></h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="single-post-list-wrap">
-                            <div class="media">
-                                <div class="media-left">
-                                    <img src="{% static 'img/post/list/1.png' %}" alt="img">
-                                </div>
-                                <div class="media-body">
-                                    <div class="details">
-                                        <div class="post-meta-single">
-                                            <ul>
-                                                <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                            </ul>
-                                        </div>
-                                        <h6 class="title"><a href="blog-details.html">Himachal Pradesh rules in
-                                                order to allow tourists </a></h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single-post-list-wrap">
-                            <div class="media">
-                                <div class="media-left">
-                                    <img src="{% static 'img/post/list/2.png' %}" alt="img">
-                                </div>
-                                <div class="media-body">
-                                    <div class="details">
-                                        <div class="post-meta-single">
-                                            <ul>
-                                                <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                            </ul>
-                                        </div>
-                                        <h6 class="title"><a href="blog-details.html">Online registration, booking
-                                                for Vaishno Devi </a></h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single-post-list-wrap">
-                            <div class="media">
-                                <div class="media-left">
-                                    <img src="{% static 'img/post/list/3.png' %}" alt="img">
-                                </div>
-                                <div class="media-body">
-                                    <div class="details">
-                                        <div class="post-meta-single">
-                                            <ul>
-                                                <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                            </ul>
-                                        </div>
-                                        <h6 class="title"><a href="blog-details.html">Detecting technologies in
-                                                airports this year</a></h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single-post-list-wrap">
-                            <div class="media">
-                                <div class="media-left">
-                                    <img src="{% static 'img/post/list/4.png' %}" alt="img">
-                                </div>
-                                <div class="media-body">
-                                    <div class="details">
-                                        <div class="post-meta-single">
-                                            <ul>
-                                                <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                            </ul>
-                                        </div>
-                                        <h6 class="title"><a href="blog-details.html">The FAA will drone detect-ing
-                                                in airports this year</a></h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single-post-list-wrap">
-                            <div class="media">
-                                <div class="media-left">
-                                    <img src="{% static 'img/post/list/5.png' %}" alt="img">
-                                </div>
-                                <div class="media-body">
-                                    <div class="details">
-                                        <div class="post-meta-single">
-                                            <ul>
-                                                <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                            </ul>
-                                        </div>
-                                        <h6 class="title"><a href="blog-details.html">Thailand makes it mand-atory
-                                                for tourists to stay</a></h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="col-lg-3 col-sm-6">
@@ -528,44 +236,27 @@
                     <h6 class="title">What’s new</h6>
                 </div>
                 <div class="post-slider owl-carousel">
-                    <div class="item">
-                        <div class="single-post-wrap">
-                            <div class="thumb">
-                                <img src="{% static 'img/post/8.png' %}" alt="img">
-                            </div>
-                            <div class="details">
-                                <div class="post-meta-single mb-4 pt-1">
-                                    <ul>
-                                        <li><a class="tag-base tag-blue" href="cat-tech.html">Tech</a></li>
-                                        <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                    </ul>
+                    {% for post in posts|slice:":3"  %}
+                        <div class="item">
+                            <div class="single-post-wrap">
+                                <div class="thumb">
+                                    <img src="{{post.image.url}}" alt="img">
                                 </div>
-                                <h6 class="title"><a href="blog-details.html">Uttarakhand’s Hemkund Sahib yatra to
-                                        start from September 4</a></h6>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipi sicing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. </p>
+                                <div class="details">
+                                    <div class="post-meta-single mb-4 pt-1">
+                                        <ul>
+                                            {% for cat in post.category.all  %}
+                                            <li><a class="tag-base tag-blue" href="cat-tech.html">{{ cat.name }}</a></li>
+                                            {% endfor %}
+                                            <li><i class="fa fa-clock-o"></i>{{post.published_date}}</li>
+                                        </ul>
+                                    </div>
+                                    <h6 class="title"><a href="blog-details.html">{{post.title}}</a></h6>
+                                    <p>{{post.content|truncatewords:20}}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="item">
-                        <div class="single-post-wrap">
-                            <div class="thumb">
-                                <img src="{% static 'img/post/8.png' %}" alt="img">
-                            </div>
-                            <div class="details">
-                                <div class="post-meta-single mb-4 pt-1">
-                                    <ul>
-                                        <li><a class="tag-base tag-blue" href="cat-tech.html">Tech</a></li>
-                                        <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                    </ul>
-                                </div>
-                                <h6 class="title"><a href="blog-details.html">Uttarakhand’s Hemkund Sahib yatra to
-                                        start from September 4</a></h6>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipi sicing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. </p>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
             <!-- <div class="col-lg-3 col-sm-6">
@@ -611,593 +302,115 @@
                         <div class="col-md-8">
                             <div class="nxp-tab-inner nxp-tab-post text-md-right">
                                 <ul class="nav nav-tabs" id="ex1" role="tablist">
-                                    <li class="nav-item" role="presentation">
-                                        <a class="nav-link active" id="ex1-tab-1" data-toggle="pill"
-                                            href="#ex1-tabs-1" role="tab" aria-selected="true">
-                                            Game
-                                        </a>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
-                                        <a class="nav-link" id="ex1-tab-2" data-toggle="pill" href="#ex1-tabs-2"
-                                            role="tab" aria-selected="false">
-                                            Politics
-                                        </a>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
-                                        <a class="nav-link" id="ex1-tab-3" data-toggle="pill" href="#ex1-tabs-3"
-                                            role="tab" aria-selected="false">
-                                            Fashion
-                                        </a>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
-                                        <a class="nav-link" id="ex1-tab-4" data-toggle="pill" href="#ex1-tabs-4"
-                                            role="tab" aria-selected="false">
-                                            Tech
-                                        </a>
-                                    </li>
+                                    {% for cat in cats  %}
+                                        <li class="nav-item" role="presentation">
+                                            <a class="nav-link active" id="ex1-tab-1" data-toggle="pill"
+                                                href="#ex1-tabs-{{cat.id}}" role="tab" aria-selected="true">
+                                                {{cat.name}}
+                                            </a>
+                                        </li>
+                                    {% endfor %}
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="tab-content " id="ex1-content">
-                    <div class="tab-pane fade show active" id="ex1-tabs-1" role="tabpanel">
+                    {% for cat in cats  %}
+                    <div class="tab-pane fade" id="ex1-tabs-{{cat.id}}" role="tabpanel">
+                    <p>in tab {{cat.id}}</p>
+                    {% get_posts_by_category cat.id as cat_posts %}
                         <div class="row">
-                            <div class="col-12">
-                                <div class="thumb mb-4">
-                                    <img class="w-100" src="{% static 'img/post/29.png' %}" alt="img">
+                            <div class="col-sm-6">
+                                {% for post in cat_posts|slice:"0:3"  %}
+                                <div class="single-post-list-wrap">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <img src="{{post.image.url}}" alt="img">
+                                        </div>
+                                        <div class="media-body">
+                                            <div class="details">
+                                                <div class="post-meta-single">
+                                                    <ul>
+                                                        <li><i class="fa fa-clock-o"></i>{{post.published_date}}</li>
+                                                    </ul>
+                                                </div>
+                                                <h6 class="title"><a href="blog-details.html">{{post.title}} </a></h6>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+                                {% endfor %}
                             </div>
                             <div class="col-sm-6">
+                                {% for post in cat_posts|slice:"4:7"  %}
                                 <div class="single-post-list-wrap">
                                     <div class="media">
                                         <div class="media-left">
-                                            <img src="{% static 'img/post/list/1.png' %}" alt="img">
+                                            <img src="{{post.image.url}}" alt="img">
                                         </div>
                                         <div class="media-body">
                                             <div class="details">
                                                 <div class="post-meta-single">
                                                     <ul>
-                                                        <li><i class="fa fa-clock-o"></i>08.22.2023</li>
+                                                        <li><i class="fa fa-clock-o"></i>{{post.published_date}}</li>
                                                     </ul>
                                                 </div>
-                                                <h6 class="title"><a href="blog-details.html">Himachal Pradesh rules
-                                                        in order to allow tourists </a></h6>
+                                                <h6 class="title"><a href="blog-details.html">{{post.title}} </a></h6>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="single-post-list-wrap">
-                                    <div class="media">
-                                        <div class="media-left">
-                                            <img src="{% static 'img/post/list/2.png' %}" alt="img">
-                                        </div>
-                                        <div class="media-body">
-                                            <div class="details">
-                                                <div class="post-meta-single">
-                                                    <ul>
-                                                        <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                                    </ul>
-                                                </div>
-                                                <h6 class="title"><a href="blog-details.html">Online registration,
-                                                        booking for Vaishno Devi </a></h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="single-post-list-wrap">
-                                    <div class="media">
-                                        <div class="media-left">
-                                            <img src="{% static 'img/post/list/3.png' %}" alt="img">
-                                        </div>
-                                        <div class="media-body">
-                                            <div class="details">
-                                                <div class="post-meta-single">
-                                                    <ul>
-                                                        <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                                    </ul>
-                                                </div>
-                                                <h6 class="title"><a href="blog-details.html">Detecting technologies
-                                                        in airports this year</a></h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="single-post-list-wrap">
-                                    <div class="media">
-                                        <div class="media-left">
-                                            <img src="{% static 'img/post/list/1.png' %}" alt="img">
-                                        </div>
-                                        <div class="media-body">
-                                            <div class="details">
-                                                <div class="post-meta-single">
-                                                    <ul>
-                                                        <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                                    </ul>
-                                                </div>
-                                                <h6 class="title"><a href="blog-details.html">Himachal Pradesh rules
-                                                        in order to allow tourists </a></h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="single-post-list-wrap">
-                                    <div class="media">
-                                        <div class="media-left">
-                                            <img src="{% static 'img/post/list/2.png' %}" alt="img">
-                                        </div>
-                                        <div class="media-body">
-                                            <div class="details">
-                                                <div class="post-meta-single">
-                                                    <ul>
-                                                        <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                                    </ul>
-                                                </div>
-                                                <h6 class="title"><a href="blog-details.html">Online registration,
-                                                        booking for Vaishno Devi </a></h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="single-post-list-wrap">
-                                    <div class="media">
-                                        <div class="media-left">
-                                            <img src="{% static 'img/post/list/3.png' %}" alt="img">
-                                        </div>
-                                        <div class="media-body">
-                                            <div class="details">
-                                                <div class="post-meta-single">
-                                                    <ul>
-                                                        <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                                    </ul>
-                                                </div>
-                                                <h6 class="title"><a href="blog-details.html">Detecting technologies
-                                                        in airports this year</a></h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="ex1-tabs-2" role="tabpanel">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="thumb mb-4">
-                                    <img class="w-100" src="{% static 'img/post/29.png' %}" alt="img">
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="single-post-list-wrap">
-                                    <div class="media">
-                                        <div class="media-left">
-                                            <img src="{% static 'img/post/list/1.png' %}" alt="img">
-                                        </div>
-                                        <div class="media-body">
-                                            <div class="details">
-                                                <div class="post-meta-single">
-                                                    <ul>
-                                                        <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                                    </ul>
-                                                </div>
-                                                <h6 class="title"><a href="blog-details.html">Himachal Pradesh rules
-                                                        in order to allow tourists </a></h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="single-post-list-wrap">
-                                    <div class="media">
-                                        <div class="media-left">
-                                            <img src="{% static 'img/post/list/2.png' %}" alt="img">
-                                        </div>
-                                        <div class="media-body">
-                                            <div class="details">
-                                                <div class="post-meta-single">
-                                                    <ul>
-                                                        <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                                    </ul>
-                                                </div>
-                                                <h6 class="title"><a href="blog-details.html">Online registration,
-                                                        booking for Vaishno Devi </a></h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="single-post-list-wrap">
-                                    <div class="media">
-                                        <div class="media-left">
-                                            <img src="{% static 'img/post/list/3.png' %}" alt="img">
-                                        </div>
-                                        <div class="media-body">
-                                            <div class="details">
-                                                <div class="post-meta-single">
-                                                    <ul>
-                                                        <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                                    </ul>
-                                                </div>
-                                                <h6 class="title"><a href="blog-details.html">Detecting technologies
-                                                        in airports this year</a></h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="single-post-list-wrap">
-                                    <div class="media">
-                                        <div class="media-left">
-                                            <img src="{% static 'img/post/list/1.png' %}" alt="img">
-                                        </div>
-                                        <div class="media-body">
-                                            <div class="details">
-                                                <div class="post-meta-single">
-                                                    <ul>
-                                                        <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                                    </ul>
-                                                </div>
-                                                <h6 class="title"><a href="blog-details.html">Himachal Pradesh rules
-                                                        in order to allow tourists </a></h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="single-post-list-wrap">
-                                    <div class="media">
-                                        <div class="media-left">
-                                            <img src="{% static 'img/post/list/2.png' %}" alt="img">
-                                        </div>
-                                        <div class="media-body">
-                                            <div class="details">
-                                                <div class="post-meta-single">
-                                                    <ul>
-                                                        <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                                    </ul>
-                                                </div>
-                                                <h6 class="title"><a href="blog-details.html">Online registration,
-                                                        booking for Vaishno Devi </a></h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="single-post-list-wrap">
-                                    <div class="media">
-                                        <div class="media-left">
-                                            <img src="{% static 'img/post/list/3.png' %}" alt="img">
-                                        </div>
-                                        <div class="media-body">
-                                            <div class="details">
-                                                <div class="post-meta-single">
-                                                    <ul>
-                                                        <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                                    </ul>
-                                                </div>
-                                                <h6 class="title"><a href="blog-details.html">Detecting technologies
-                                                        in airports this year</a></h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="ex1-tabs-3" role="tabpanel">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="thumb mb-4">
-                                    <img class="w-100" src="{% static 'img/post/29.png' %}" alt="img">
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="single-post-list-wrap">
-                                    <div class="media">
-                                        <div class="media-left">
-                                            <img src="{% static 'img/post/list/1.png' %}" alt="img">
-                                        </div>
-                                        <div class="media-body">
-                                            <div class="details">
-                                                <div class="post-meta-single">
-                                                    <ul>
-                                                        <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                                    </ul>
-                                                </div>
-                                                <h6 class="title"><a href="blog-details.html">Himachal Pradesh rules
-                                                        in order to allow tourists </a></h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="single-post-list-wrap">
-                                    <div class="media">
-                                        <div class="media-left">
-                                            <img src="{% static 'img/post/list/2.png' %}" alt="img">
-                                        </div>
-                                        <div class="media-body">
-                                            <div class="details">
-                                                <div class="post-meta-single">
-                                                    <ul>
-                                                        <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                                    </ul>
-                                                </div>
-                                                <h6 class="title"><a href="blog-details.html">Online registration,
-                                                        booking for Vaishno Devi </a></h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="single-post-list-wrap">
-                                    <div class="media">
-                                        <div class="media-left">
-                                            <img src="{% static 'img/post/list/3.png' %}" alt="img">
-                                        </div>
-                                        <div class="media-body">
-                                            <div class="details">
-                                                <div class="post-meta-single">
-                                                    <ul>
-                                                        <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                                    </ul>
-                                                </div>
-                                                <h6 class="title"><a href="blog-details.html">Detecting technologies
-                                                        in airports this year</a></h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="single-post-list-wrap">
-                                    <div class="media">
-                                        <div class="media-left">
-                                            <img src="{% static 'img/post/list/1.png' %}" alt="img">
-                                        </div>
-                                        <div class="media-body">
-                                            <div class="details">
-                                                <div class="post-meta-single">
-                                                    <ul>
-                                                        <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                                    </ul>
-                                                </div>
-                                                <h6 class="title"><a href="blog-details.html">Himachal Pradesh rules
-                                                        in order to allow tourists </a></h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="single-post-list-wrap">
-                                    <div class="media">
-                                        <div class="media-left">
-                                            <img src="{% static 'img/post/list/2.png' %}" alt="img">
-                                        </div>
-                                        <div class="media-body">
-                                            <div class="details">
-                                                <div class="post-meta-single">
-                                                    <ul>
-                                                        <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                                    </ul>
-                                                </div>
-                                                <h6 class="title"><a href="blog-details.html">Online registration,
-                                                        booking for Vaishno Devi </a></h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="single-post-list-wrap">
-                                    <div class="media">
-                                        <div class="media-left">
-                                            <img src="{% static 'img/post/list/3.png' %}" alt="img">
-                                        </div>
-                                        <div class="media-body">
-                                            <div class="details">
-                                                <div class="post-meta-single">
-                                                    <ul>
-                                                        <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                                    </ul>
-                                                </div>
-                                                <h6 class="title"><a href="blog-details.html">Detecting technologies
-                                                        in airports this year</a></h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="ex1-tabs-4" role="tabpanel">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="thumb mb-4">
-                                    <img class="w-100" src="{% static 'img/post/29.png' %}" alt="img">
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="single-post-list-wrap">
-                                    <div class="media">
-                                        <div class="media-left">
-                                            <img src="{% static 'img/post/list/1.png' %}" alt="img">
-                                        </div>
-                                        <div class="media-body">
-                                            <div class="details">
-                                                <div class="post-meta-single">
-                                                    <ul>
-                                                        <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                                    </ul>
-                                                </div>
-                                                <h6 class="title"><a href="blog-details.html">Himachal Pradesh rules
-                                                        in order to allow tourists </a></h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="single-post-list-wrap">
-                                    <div class="media">
-                                        <div class="media-left">
-                                            <img src="{% static 'img/post/list/2.png' %}" alt="img">
-                                        </div>
-                                        <div class="media-body">
-                                            <div class="details">
-                                                <div class="post-meta-single">
-                                                    <ul>
-                                                        <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                                    </ul>
-                                                </div>
-                                                <h6 class="title"><a href="blog-details.html">Online registration,
-                                                        booking for Vaishno Devi </a></h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="single-post-list-wrap">
-                                    <div class="media">
-                                        <div class="media-left">
-                                            <img src="{% static 'img/post/list/3.png' %}" alt="img">
-                                        </div>
-                                        <div class="media-body">
-                                            <div class="details">
-                                                <div class="post-meta-single">
-                                                    <ul>
-                                                        <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                                    </ul>
-                                                </div>
-                                                <h6 class="title"><a href="blog-details.html">Detecting technologies
-                                                        in airports this year</a></h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="single-post-list-wrap">
-                                    <div class="media">
-                                        <div class="media-left">
-                                            <img src="{% static 'img/post/list/1.png' %}" alt="img">
-                                        </div>
-                                        <div class="media-body">
-                                            <div class="details">
-                                                <div class="post-meta-single">
-                                                    <ul>
-                                                        <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                                    </ul>
-                                                </div>
-                                                <h6 class="title"><a href="blog-details.html">Himachal Pradesh rules
-                                                        in order to allow tourists </a></h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="single-post-list-wrap">
-                                    <div class="media">
-                                        <div class="media-left">
-                                            <img src="{% static 'img/post/list/2.png' %}" alt="img">
-                                        </div>
-                                        <div class="media-body">
-                                            <div class="details">
-                                                <div class="post-meta-single">
-                                                    <ul>
-                                                        <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                                    </ul>
-                                                </div>
-                                                <h6 class="title"><a href="blog-details.html">Online registration,
-                                                        booking for Vaishno Devi </a></h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="single-post-list-wrap">
-                                    <div class="media">
-                                        <div class="media-left">
-                                            <img src="{% static 'img/post/list/3.png' %}" alt="img">
-                                        </div>
-                                        <div class="media-body">
-                                            <div class="details">
-                                                <div class="post-meta-single">
-                                                    <ul>
-                                                        <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                                    </ul>
-                                                </div>
-                                                <h6 class="title"><a href="blog-details.html">Detecting technologies
-                                                        in airports this year</a></h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
             <div class="col-xl-3 order-xl-1 col-sm-6">
+                {% for post in posts|slice:":2"  %}
                 <div class="single-post-wrap style-overlay-bg">
                     <div class="thumb">
-                        <img src="{% static 'img/post/25.png' %}" alt="img">
+                        <img src="{{post.image.url}}" alt="img">
                     </div>
                     <div class="details">
                         <div class="post-meta-single mb-3">
                             <ul>
-                                <li><a class="tag-base tag-blue" href="cat-tech.html">Tech</a></li>
+                                {% for cat in post.category.all  %}
+                                <li><a class="tag-base tag-blue" href="cat-tech.html">{{ cat.name }}</a></li>
+                                {% endfor %}
                                 <li>
-                                    <p><i class="fa fa-clock-o"></i>08.22.2023</p>
+                                    <p><i class="fa fa-clock-o"></i>{{post.published_date}}</p>
                                 </li>
                             </ul>
                         </div>
-                        <h6 class="title"><a href="blog-details.html">A Comparison of the Sony FE 85mm f/1.4 GM and
-                                Sigma</a></h6>
+                        <h6 class="title"><a href="blog-details.html">{{post.title}}</a></h6>
                     </div>
                 </div>
-                <div class="single-post-wrap style-overlay-bg">
-                    <div class="thumb">
-                        <img src="{% static 'img/post/26.png' %}" alt="img">
-                    </div>
-                    <div class="details">
-                        <div class="post-meta-single mb-3">
-                            <ul>
-                                <li><a class="tag-base tag-blue" href="cat-tech.html">Tech</a></li>
-                                <li>
-                                    <p><i class="fa fa-clock-o"></i>08.22.2023</p>
-                                </li>
-                            </ul>
-                        </div>
-                        <h6 class="title"><a href="blog-details.html">A Comparison of the Sony FE 85mm f/1.4 GM and
-                                Sigma</a></h6>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
             <div class="col-xl-3 col-sm-6 order-xl-12">
+                {% for post in posts|slice:"5:7"  %}
                 <div class="single-post-wrap style-overlay-bg">
                     <div class="thumb">
-                        <img src="{% static 'img/post/27.png' %}" alt="img">
+                        <img src="{{post.image.url}}" alt="img">
                     </div>
                     <div class="details">
                         <div class="post-meta-single mb-3">
                             <ul>
-                                <li><a class="tag-base tag-blue" href="cat-tech.html">Tech</a></li>
+                                {% for cat in post.category.all  %}
+                                <li><a class="tag-base tag-blue" href="cat-tech.html">{{ cat.name }}</a></li>
+                                {% endfor %}
                                 <li>
-                                    <p><i class="fa fa-clock-o"></i>08.22.2023</p>
+                                    <p><i class="fa fa-clock-o"></i>{{post.published_date}}</p>
                                 </li>
                             </ul>
                         </div>
-                        <h6 class="title"><a href="blog-details.html">A Comparison of the Sony FE 85mm f/1.4 GM and
-                                Sigma</a></h6>
+                        <h6 class="title"><a href="blog-details.html">{{post.title}}</a></h6>
                     </div>
                 </div>
-                <div class="single-post-wrap style-overlay-bg">
-                    <div class="thumb">
-                        <img src="{% static 'img/post/28.png' %}" alt="img">
-                    </div>
-                    <div class="details">
-                        <div class="post-meta-single mb-3">
-                            <ul>
-                                <li><a class="tag-base tag-blue" href="cat-tech.html">Tech</a></li>
-                                <li>
-                                    <p><i class="fa fa-clock-o"></i>08.22.2023</p>
-                                </li>
-                            </ul>
-                        </div>
-                        <h6 class="title"><a href="blog-details.html">A Comparison of the Sony FE 85mm f/1.4 GM and
-                                Sigma</a></h6>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>

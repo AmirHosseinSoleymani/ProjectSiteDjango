@@ -9,22 +9,22 @@
         $(document).on('click', '.navbar-area .navbar-nav li.menu-item-has-children>a', function (e) {
             e.preventDefault();
         })
-       
+
         /*-------------------------------------
             menu
         -------------------------------------*/
-        $('.navbar-area .menu').on('click', function() {
+        $('.navbar-area .menu').on('click', function () {
             $(this).toggleClass('open');
             $('.navbar-area .navbar-collapse').toggleClass('sopen');
         });
-    
+
         // mobile menu
         if ($(window).width() < 992) {
             $(".in-mobile").clone().appendTo(".sidebar-inner");
             $(".in-mobile ul li.menu-item-has-children").append('<i class="fas fa-chevron-right"></i>');
             $('<i class="fas fa-chevron-right"></i>').insertAfter("");
 
-            $(".menu-item-has-children a").on('click', function(e) {
+            $(".menu-item-has-children a").on('click', function (e) {
                 // e.preventDefault();
 
                 $(this).siblings('.sub-menu').animate({
@@ -35,8 +35,8 @@
 
         var menutoggle = $('.menu-toggle');
         var mainmenu = $('.navbar-nav');
-        
-        menutoggle.on('click', function() {
+
+        menutoggle.on('click', function () {
             if (menutoggle.hasClass('is-active')) {
                 mainmenu.removeClass('menu-open');
             } else {
@@ -47,9 +47,9 @@
         /*--------------------------------------------------
             select onput
         ---------------------------------------------------*/
-        if ($('select').length){
+        if ($('select').length) {
             $('select').niceSelect();
-        } 
+        }
 
 
         /* -----------------------------------------------------
@@ -58,28 +58,28 @@
         var leftArrow = '<i class="fa fa-angle-left" aria-hidden="true"></i>';
         var rightArrow = '<i class="fa fa-angle-right" aria-hidden="true"></i>';
 
-        
+
         /* -------------------------------------------------
             Magnific JS 
         ------------------------------------------------- */
         $('.video-play-btn').magnificPopup({
-          type: 'iframe',
-          removalDelay: 260,
-          mainClass: 'mfp-zoom-in',
+            type: 'iframe',
+            removalDelay: 260,
+            mainClass: 'mfp-zoom-in',
         });
         $.extend(true, $.magnificPopup.defaults, {
-          iframe: {
-            patterns: {
-              youtube: {
-                index: 'youtube.com/', 
-                id: 'v=', 
-                src: 'https://www.youtube.com/embed/Wimkqo8gDZ0' 
-              }
+            iframe: {
+                patterns: {
+                    youtube: {
+                        index: 'youtube.com/',
+                        id: 'v=',
+                        src: 'https://www.youtube.com/embed/Wimkqo8gDZ0'
+                    }
+                }
             }
-          }
         });
 
-        
+
 
 
         /*------------------------------------------------
@@ -90,8 +90,8 @@
             margin: 30,
             nav: true,
             dots: false,
-            smartSpeed:1500,
-            navText: [ leftArrow, rightArrow],
+            smartSpeed: 1500,
+            navText: [leftArrow, rightArrow],
             responsive: {
                 0: {
                     items: 1
@@ -112,7 +112,7 @@
             loop: true,
             nav: false,
             dots: true,
-            smartSpeed:1500,
+            smartSpeed: 1500,
             center: true,
             items: 3,
             responsive: {
@@ -131,18 +131,18 @@
         /*--------------------------------------------
             Search Popup
         ---------------------------------------------*/
-        var bodyOvrelay =  $('#body-overlay');
+        var bodyOvrelay = $('#body-overlay');
         var searchPopup = $('#td-search-popup');
 
-        $(document).on('click','#body-overlay',function(e){
+        $(document).on('click', '#body-overlay', function (e) {
             e.preventDefault();
-        bodyOvrelay.removeClass('active');
+            bodyOvrelay.removeClass('active');
             searchPopup.removeClass('active');
         });
-        $(document).on('click','.search',function(e){
+        $(document).on('click', '.search', function (e) {
             e.preventDefault();
             searchPopup.addClass('active');
-        bodyOvrelay.addClass('active');
+            bodyOvrelay.addClass('active');
         });
 
 
@@ -163,7 +163,7 @@
 
     });
 
-    $(window).on("scroll", function() {
+    $(window).on("scroll", function () {
         /*---------------------------------------
             back-to-top
         -----------------------------------------*/
@@ -183,7 +183,7 @@
         } else {
             $(".navbar").addClass("sticky-active");
         }
-        
+
     });
 
 
@@ -214,3 +214,36 @@
 
 
 })(jQuery);
+
+
+
+// اضافه کردن event listener برای کلیک بر روی هر تب
+document.querySelectorAll('.nav-link').forEach(tab => {
+    tab.addEventListener('click', function () {
+        // حذف کلاس 'active' از همه تب ها
+        document.querySelectorAll('.nav-link').forEach(tab => {
+            tab.classList.remove('active');
+        });
+        // اضافه کردن کلاس 'active' به تبی که کاربر بر روی آن کلیک کرده است
+        this.classList.add('active');
+
+        // مخفی کردن همه محتوای تب ها
+        document.querySelectorAll('.tab-pane').forEach(tabContent => {
+            tabContent.classList.remove('show', 'active');
+        });
+        // نمایش محتوای مربوط به تبی که کاربر بر روی آن کلیک کرده است
+        const tabContentId = this.getAttribute('href').substring(1);
+        document.getElementById(tabContentId).classList.add('show', 'active');
+    });
+});
+
+// اضافه کردن کلاس 'show' و 'active' به تب اول به طور پیش‌فرض
+window.addEventListener('load', function () {
+    const firstTab = document.querySelector('.nav-link');
+    firstTab.classList.add('active');
+
+    const firstTabContentId = firstTab.getAttribute('href').substring(1);
+    document.getElementById(firstTabContentId).classList.add('show', 'active');
+});
+
+

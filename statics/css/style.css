@@ -2594,9 +2594,11 @@ ul {
 }
 .single-post-list-wrap .media .media-left {
   margin-right: 13px;
+  width: 120px !important;
 }
 .single-post-list-wrap .media img {
   border-radius: 5px;
+  height: 80px;
 }
 .single-post-list-wrap .media .media-body .post-meta-single ul li {
   font-size: 14px;
