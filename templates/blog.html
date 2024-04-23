@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% load static %}
-
+{% load blog_tag %}
 {% block body %}
 
 <!--page-title area-->
@@ -71,14 +71,15 @@
                         <div class="widget widget-category">
                             <h6 class="widget-title">Category</h6>
                             <div class="row custom-gutters-14">
-                                {% for cat in cats %}
-                                    <div class="col-lg-6 col-sm-6">
-                                        <div class="single-category-inner">
-                                            <img src="{% static 'img/category/9.png' %}" alt="img">
-                                            <a class="tag-base tag-blue" href="#">{{cat.name}}</a>
-                                        </div>            
-                                    </div>                       
-                            {% endfor %}
+                                {% allCategories as allcats %}
+                                {% for cat in allcats  %}
+                                <div class="col-sm-6">
+                                    <div class="single-category-inner">
+                                        <img src="{% static 'img/category/9.png' %}" alt="img">
+                                        <a class="tag-base tag-blue" href="cat-tech.html">{{cat.name}}</a>
+                                    </div>
+                                </div>
+                                {% endfor %}
                             </div>
                         </div>
                         <div class="widget widget-social">
@@ -96,10 +97,10 @@
                             <div class="post-slider owl-carousel">
                                 <div class="item">
                                     <div class="trending-post">
-                                        {% for post in mposts %}
+                                        {% for post in mposts|slice:":3" %}
                                             <div class="single-post-wrap style-overlay">
                                                 <div class="thumb">
-                                                    <img src="{{post.image.url}}" alt="img">
+                                                    <img src="{{post.image.url}}" alt="img" height="130px">
                                                 </div>
                                                 <div class="details">
                                                     <div class="post-meta-single">

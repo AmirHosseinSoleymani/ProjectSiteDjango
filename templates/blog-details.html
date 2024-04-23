@@ -1,167 +1,10 @@
-<!DOCTYPE html>
-<html lang="zxx">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>NextPage - Blog, Magazine Html Template</title>
+{% load static %}
+{% load blog_tag %}
+{% block body %}
 
-    <!-- favicon -->
-    <link rel=icon href="assets/img/favicon.png" sizes="20x20" type="image/png">
 
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="assets/css/vendor.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/responsive.css">
-
-</head>
-
-<body>
-
-    <!-- preloader area start -->
-    <div class="preloader" id="preloader">
-        <div class="preloader-inner">
-            <div class="spinner">
-                <div class="dot1"></div>
-                <div class="dot2"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- search popup start-->
-    <div class="td-search-popup" id="td-search-popup">
-        <form action="index.html" class="search-form">
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search.....">
-            </div>
-            <button type="submit" class="submit-btn"><i class="fa fa-search"></i></button>
-        </form>
-    </div>
-    <!-- search popup end-->
-    <div class="body-overlay" id="body-overlay"></div>
-
-    <!-- header start -->
-    <div class="navbar-area">
-        <!-- topbar end-->
-        <div class="topbar-area">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-6 col-md-7 align-self-center">
-                        <div class="topbar-menu text-md-left text-center">
-                            <ul class="align-self-center">
-                                <li><a href="#">Author</a></li>
-                                <li><a href="#">Advertisment</a></li>
-                                <li><a href="#">Member</a></li>
-                                <li><a href="#">Sitemap</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-5 text-md-right text-center mt-2 mt-md-0">
-                        <div class="topbar-social">
-                            <div class="topbar-date d-none d-lg-inline-block"><i class="fa fa-calendar"></i> Saturday,
-                                October 7</div>
-                            <ul class="social-area social-area-2">
-                                <li><a class="facebook-icon" href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a class="twitter-icon" href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a class="youtube-icon" href="#"><i class="fa fa-youtube-play"></i></a></li>
-                                <li><a class="instagram-icon" href="#"><i class="fa fa-instagram"></i></a></li>
-                                <li><a class="google-icon" href="#"><i class="fa fa-google-plus"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- topbar end-->
-
-        <!-- adbar end-->
-        <div class="adbar-area d-none d-lg-block">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-6 col-lg-5 align-self-center">
-                        <div class="logo text-md-left text-center">
-                            <a class="main-logo" href="index.html"><img src="assets/img/logo-2.png" alt="img"></a>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-7 text-md-right text-center">
-                        <a href="#" class="adbar-right">
-                            <img src="assets/img/add/1.png" alt="img">
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- adbar end-->
-
-        <!-- navbar start -->
-        <nav class="navbar navbar-expand-lg">
-            <div class="container nav-container">
-                <div class="responsive-mobile-menu">
-                    <div class="logo d-lg-none d-block">
-                        <a class="main-logo" href="index.html"><img src="assets/img/logo.png" alt="img"></a>
-                    </div>
-                    <button class="menu toggle-btn d-block d-lg-none" data-target="#nextpage_main_menu"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="icon-left"></span>
-                        <span class="icon-right"></span>
-                    </button>
-                </div>
-                <div class="nav-right-part nav-right-part-mobile">
-                    <a class="search header-search" href="#"><i class="fa fa-search"></i></a>
-                </div>
-                <div class="collapse navbar-collapse" id="nextpage_main_menu">
-                    <ul class="navbar-nav menu-open">
-                        <li class="menu-item-has-children current-menu-item">
-                            <a href="#">Home</a>
-                            <ul class="sub-menu">
-                                <li><a href="index.html">Home 01</a></li>
-                                <li><a href="index-2.html">Home 02</a></li>
-                                <li><a href="index-3.html">Home 03</a></li>
-                                <li><a href="index-4.html">Home Food <span>New</span></a></li>
-                            </ul>
-                        </li>
-                        <li class="menu-item-has-children current-menu-item">
-                            <a href="#">Category</a>
-                            <ul class="sub-menu">
-                                <li><a href="cat-tech.html">Tech</a></li>
-                                <li><a href="cat-sports.html">Sports</a></li>
-                                <li><a href="cat-lifestyle.html">Lifestyle</a></li>
-                                <li><a href="cat-fashion.html">Fashion</a></li>
-                                <li><a href="cat-food.html">Food <span>New</span></a></li>
-                            </ul>
-                        </li>
-                        <li class="menu-item-has-children current-menu-item">
-                            <a href="#">Pages</a>
-                            <ul class="sub-menu">
-                                <li><a href="error.html">Error</a></li>
-                                <li><a href="author.html">Author</a></li>
-                                <li><a href="blog.html">Blog</a></li>
-                                <li><a href="blog-details.html">Blog Details</a></li>
-                            </ul>
-                        </li>
-                        <li class="menu-item-has-children current-menu-item">
-                            <a href="#">Blog</a>
-                            <ul class="sub-menu">
-                                <li><a href="blog.html">Blog</a></li>
-                                <li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
-                                <li><a href="blog-details.html">Blog Details</a></li>
-                                <li><a href="blog-details-2.html">Blog Details 2</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <div class="nav-right-part nav-right-part-desktop">
-                    <div class="menu-search-inner">
-                        <input type="text" placeholder="Search For">
-                        <button type="submit" class="submit-btn"><i class="fa fa-search"></i></button>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </div>
-    <!-- navbar end -->
 
     <!--page-title area-->
     <section class="page-title-area">
@@ -169,10 +12,10 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb-inner">
-                        <h5 class="page-title">Blog Details</h5>
+                        <h5 class="page-title">{{post.title}}</h5>
                         <ul class="page-list">
-                            <li><a href="index.html">Home</a></li>
-                            <li>Blog Details</li>
+                            <li><a href="{% url 'website:index' %}">Home</a></li>
+                            <li>{{post.title}}</li>
                         </ul>
                     </div>
                 </div>
@@ -189,87 +32,41 @@
                         <div class="single-blog-inner m-0">
                             <div class="single-post-wrap style-overlay">
                                 <div class="thumb">
-                                    <img src="assets/img/blog/4.png" alt="img">
+                                    <img src="{% static 'img/blog/4.png' %}" alt="img">
                                 </div>
                                 <div class="details pb-4">
                                     <div class="post-meta-single mb-2">
                                         <ul>
-                                            <li><a class="tag-base tag-blue" href="#">Tech</a></li>
+                                            {% for cat in post.category.all  %}
+                                            <li><a class="tag-base tag-blue" href="#">{{cat.name}}</a></li>
+                                            {% endfor %}
                                             <li>
-                                                <p><i class="fa fa-clock-o"></i>08.22.2023</p>
+                                                <p><i class="fa fa-clock-o"></i>{{post.published_date}}</p>
                                             </li>
-                                            <li><i class="fa fa-user"></i>R. Lambert</li>
+                                            <li><i class="fa fa-user"></i>{{post.author.get_full_name}}</li>
                                         </ul>
                                     </div>
-                                    <h5 class="title mt-0">Uttarakhand’s Hemkund Sahib yatra to start from</h5>
+                                    <h5 class="title mt-0">{{post.title}}</h5>
                                 </div>
                             </div>
                             <div class="single-blog-details">
-                                <p>Lorem ipsum dolor sit amet elit, sed do eiusmod tempor incididunt ut labore et dolore
-                                    magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                    nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in in voluptate velit
-                                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut unde
-                                    omnis iste natus error sit voluptatem, totam rem aperiam, eaque ipsa quae ab illo
-                                    inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
-                                    ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                                    consequuntur magni dolores eos qui ratione sequi nesciunt Neque por quisquam est</p>
-                                <blockquote class="blockquote">
-                                    <i class="fa fa-quote-right"></i>
-                                    <p>Lorem ipsum dolor sit amet elit, sed do eiusmod tempor incididunt ut labore et
-                                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud ullamco laboris nisi
-                                        ut aliquip ex ea commodo. Duis aute irure dolor in in voluptate velit esse
-                                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                    </p>
-                                </blockquote>
+                                    {{post.content}}
                             </div>
-                            <p>No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because
-                                those who do not know how to pursue pleasure rationally encounter consequences that are
-                                extremely painful. Nor again is there anyone who loves or pursues or desires to obtain
-                                pain of itself, because it is pain, but because occasionally circumstances occur in
-                                which toil and pain can procure him some great pleasure.</p>
-                            <div class="add-area">
-                                <a href="#"><img src="assets/img/add/2.png" alt="img"></a>
-                            </div>
-                            <h5>Expression in New Human Rights Policy</h5>
-                            <p>No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because
-                                those who do not know how to pursue pleasure rationally encounter consequences that are
-                                extremely painful. Nor again is there anyone who loves or pursues or desires to obtain
-                                pain of itself, because it is pain, but because occasionally circumstances occur in
-                                which toil and pain can procure him some great pleasure.</p>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="thumb mb-3 mb-sm-0">
-                                        <img src="assets/img/blog/5.png" alt="img">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <img src="assets/img/blog/6.png" alt="img">
-                                </div>
-                            </div>
-                            <div class="video-area">
-                                <h5>Expression in New Human Rights Policy</h5>
-                                <div class="single-blog-inner mb-4">
-                                    <div class="thumb">
-                                        <img src="assets/img/blog/7.png" alt="image">
-                                        <a class="video-play-btn" href="https://www.youtube.com/embed/Wimkqo8gDZ0"
-                                            data-effect="mfp-zoom-in"><i class="fa fa-play"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <p>No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because
-                                those who do not know how to pursue pleasure rationally encounter consequences that are
-                                extremely painful. Nor again is there anyone who loves or pursues or desires to obtain
-                                pain of itself, because it is pain, but because occasionally circumstances occur in
-                                which toil and pain can procure him some great pleasure.</p>
+                           
                             <div class="meta">
                                 <div class="row">
                                     <div class="col-lg-5">
                                         <div class="tags">
                                             <span>Tags:</span>
-                                            <a href="#">News,</a>
-                                            <a href="#">Blog,</a>
-                                            <a href="#">Magazine</a>
+                                            {% for tag in post.tags.all  %}
+                                                {% if not forloop.last %}
+                                                <a href="#" style="font-weight: bold;">{{tag.name}},</a>
+                                                {% else %}
+                                                <a href="#" style="font-weight: bold;">{{tag.name}}</a>
+                                                {% endif %}
+                                                
+
+                                            {% endfor %}
                                         </div>
                                     </div>
                                     <div class="col-lg-7 text-md-right">
@@ -293,7 +90,7 @@
                             </div>
                             <div class="author-area">
                                 <div class="media">
-                                    <img src="assets/img/author/1.png" alt="img">
+                                    <img src="{% static 'img/author/1.png' %}" alt="img">
                                     <div class="media-body align-self-center">
                                         <h4>Nathan George</h4>
                                         <p>No one rejects, dislikes, or avoids pleasure itself, because it is pleasure,
@@ -312,7 +109,7 @@
                                 <div class="col-lg-4 col-md-6">
                                     <div class="single-post-wrap">
                                         <div class="thumb">
-                                            <img src="assets/img/post/19.png" alt="img">
+                                            <img src="{% static 'img/post/19.png' %}" alt="img">
                                             <a class="tag-base tag-red" href="#">Tech</a>
                                         </div>
                                         <div class="details">
@@ -330,7 +127,7 @@
                                 <div class="col-lg-4 col-md-6">
                                     <div class="single-post-wrap">
                                         <div class="thumb">
-                                            <img src="assets/img/post/20.png" alt="img">
+                                            <img src="{% static 'img/post/20.png' %}" alt="img">
                                             <a class="tag-base tag-blue" href="#">Tech</a>
                                         </div>
                                         <div class="details">
@@ -347,7 +144,7 @@
                                 <div class="col-lg-4 col-md-6">
                                     <div class="single-post-wrap">
                                         <div class="thumb">
-                                            <img src="assets/img/post/21.png" alt="img">
+                                            <img src="{% static 'img/post/21.png' %}" alt="img">
                                             <a class="tag-base tag-light-green" href="#">Tech</a>
                                         </div>
                                         <div class="details">
@@ -370,7 +167,7 @@
                             </div>
                             <div class="media">
                                 <a href="#">
-                                    <img src="assets/img/author/2.png" alt="comment">
+                                    <img src="{% static 'img/author/2.png' %}" alt="comment">
                                 </a>
                                 <div class="media-body">
                                     <h5><a href="#">John F. Medina</a></h5>
@@ -382,7 +179,7 @@
                             </div>
                             <div class="media nesting">
                                 <a href="#">
-                                    <img src="assets/img/author/3.png" alt="comment">
+                                    <img src="{% static 'img/author/3.png' %}" alt="comment">
                                 </a>
                                 <div class="media-body">
                                     <h5><a href="#">Jeffrey T. Kelly</a></h5>
@@ -394,7 +191,7 @@
                             </div>
                             <div class="media">
                                 <a href="#">
-                                    <img src="assets/img/author/2.png" alt="comment">
+                                    <img src="{% static 'img/author/2.png' %}" alt="comment">
                                 </a>
                                 <div class="media-body">
                                     <h5><a href="#">Richard B. Zellmer</a></h5>
@@ -450,59 +247,20 @@
                         <div class="widget widget-category">
                             <h6 class="widget-title">Category</h6>
                             <div class="row custom-gutters-14">
-                                <div class="col-lg-6 col-sm-6">
+                                {% allCategories as allcats %}
+                                {% for cat in allcats  %}
+                                <div class="col-sm-6">
                                     <div class="single-category-inner">
-                                        <img src="assets/img/category/9.png" alt="img">
-                                        <a class="tag-base tag-blue" href="#">Tech</a>
+                                        <img src="{% static 'img/category/9.png' %}" alt="img">
+                                        <a class="tag-base tag-blue" href="cat-tech.html">{{cat.name}}</a>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 col-sm-6">
-                                    <div class="single-category-inner">
-                                        <img src="assets/img/category/10.png" alt="img">
-                                        <a class="tag-base tag-blue" href="#">Tech</a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-sm-6">
-                                    <div class="single-category-inner">
-                                        <img src="assets/img/category/11.png" alt="img">
-                                        <a class="tag-base tag-blue" href="#">Tech</a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-sm-6">
-                                    <div class="single-category-inner">
-                                        <img src="assets/img/category/12.png" alt="img">
-                                        <a class="tag-base tag-blue" href="#">Tech</a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-sm-6">
-                                    <div class="single-category-inner">
-                                        <img src="assets/img/category/13.png" alt="img">
-                                        <a class="tag-base tag-blue" href="#">Tech</a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-sm-6">
-                                    <div class="single-category-inner">
-                                        <img src="assets/img/category/14.png" alt="img">
-                                        <a class="tag-base tag-blue" href="#">Tech</a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-sm-6">
-                                    <div class="single-category-inner">
-                                        <img src="assets/img/category/15.png" alt="img">
-                                        <a class="tag-base tag-blue" href="#">Tech</a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-sm-6">
-                                    <div class="single-category-inner">
-                                        <img src="assets/img/category/16.png" alt="img">
-                                        <a class="tag-base tag-blue" href="#">Tech</a>
-                                    </div>
-                                </div>
+                                {% endfor %}
                             </div>
                         </div>
                         <div class="widget widget-add">
                             <div class="add">
-                                <img class="w-100" src="assets/img/add/3.png" alt="img">
+                                <img class="w-100" src="{% static 'img/add/3.png' %}" alt="img">
                             </div>
                         </div>
                         <div class="widget widget-social">
@@ -522,7 +280,7 @@
                                     <div class="trending-post">
                                         <div class="single-post-wrap style-overlay">
                                             <div class="thumb">
-                                                <img src="assets/img/post/5.png" alt="img">
+                                                <img src="{% static 'img/post/5.png' %}" alt="img">
                                             </div>
                                             <div class="details">
                                                 <div class="post-meta-single">
@@ -533,7 +291,7 @@
                                         </div>
                                         <div class="single-post-wrap style-overlay">
                                             <div class="thumb">
-                                                <img src="assets/img/post/6.png" alt="img">
+                                                <img src="{% static 'img/post/6.png' %}" alt="img">
                                             </div>
                                             <div class="details">
                                                 <div class="post-meta-single">
@@ -544,7 +302,7 @@
                                         </div>
                                         <div class="single-post-wrap style-overlay mb-0">
                                             <div class="thumb">
-                                                <img src="assets/img/post/7.png" alt="img">
+                                                <img src="{% static 'img/post/7.png' %}" alt="img">
                                             </div>
                                             <div class="details">
                                                 <div class="post-meta-single">
@@ -559,7 +317,7 @@
                                     <div class="trending-post">
                                         <div class="single-post-wrap style-overlay">
                                             <div class="thumb">
-                                                <img src="assets/img/post/5.png" alt="img">
+                                                <img src="{% static 'img/post/5.png' %}" alt="img">
                                             </div>
                                             <div class="details">
                                                 <div class="post-meta-single">
@@ -570,7 +328,7 @@
                                         </div>
                                         <div class="single-post-wrap style-overlay">
                                             <div class="thumb">
-                                                <img src="assets/img/post/6.png" alt="img">
+                                                <img src="{% static 'img/post/6.png' %}" alt="img">
                                             </div>
                                             <div class="details">
                                                 <div class="post-meta-single">
@@ -581,7 +339,7 @@
                                         </div>
                                         <div class="single-post-wrap style-overlay mb-0">
                                             <div class="thumb">
-                                                <img src="assets/img/post/7.png" alt="img">
+                                                <img src="{% static 'img/post/7.png' %}" alt="img">
                                             </div>
                                             <div class="details">
                                                 <div class="post-meta-single">
@@ -622,7 +380,7 @@
                                     <div class="single-post-list-wrap">
                                         <div class="media">
                                             <div class="media-left">
-                                                <img src="assets/img/post/list/1.png" alt="img">
+                                                <img src="{% static 'img/post/list/1.png' %}" alt="img">
                                             </div>
                                             <div class="media-body">
                                                 <div class="details">
@@ -640,7 +398,7 @@
                                     <div class="single-post-list-wrap">
                                         <div class="media">
                                             <div class="media-left">
-                                                <img src="assets/img/post/list/2.png" alt="img">
+                                                <img src="{% static 'img/post/list/2.png' %}" alt="img">
                                             </div>
                                             <div class="media-body">
                                                 <div class="details">
@@ -658,7 +416,7 @@
                                     <div class="single-post-list-wrap mb-0">
                                         <div class="media">
                                             <div class="media-left">
-                                                <img src="assets/img/post/list/3.png" alt="img">
+                                                <img src="{% static 'img/post/list/3.png' %}" alt="img">
                                             </div>
                                             <div class="media-body">
                                                 <div class="details">
@@ -678,7 +436,7 @@
                                     <div class="single-post-list-wrap">
                                         <div class="media">
                                             <div class="media-left">
-                                                <img src="assets/img/post/list/2.png" alt="img">
+                                                <img src="{% static 'img/post/list/2.png' %}" alt="img">
                                             </div>
                                             <div class="media-body">
                                                 <div class="details">
@@ -696,7 +454,7 @@
                                     <div class="single-post-list-wrap">
                                         <div class="media">
                                             <div class="media-left">
-                                                <img src="assets/img/post/list/3.png" alt="img">
+                                                <img src="{% static 'img/post/list/3.png' %}" alt="img">
                                             </div>
                                             <div class="media-body">
                                                 <div class="details">
@@ -714,7 +472,7 @@
                                     <div class="single-post-list-wrap mb-0">
                                         <div class="media">
                                             <div class="media-left">
-                                                <img src="assets/img/post/list/3.png" alt="img">
+                                                <img src="{% static 'img/post/list/3.png' %}" alt="img">
                                             </div>
                                             <div class="media-body">
                                                 <div class="details">
@@ -734,7 +492,7 @@
                                     <div class="single-post-list-wrap">
                                         <div class="media">
                                             <div class="media-left">
-                                                <img src="assets/img/post/list/2.png" alt="img">
+                                                <img src="{% static 'img/post/list/2.png' %}" alt="img">
                                             </div>
                                             <div class="media-body">
                                                 <div class="details">
@@ -752,7 +510,7 @@
                                     <div class="single-post-list-wrap">
                                         <div class="media">
                                             <div class="media-left">
-                                                <img src="assets/img/post/list/2.png" alt="img">
+                                                <img src="{% static 'img/post/list/2.png' %}" alt="img">
                                             </div>
                                             <div class="media-body">
                                                 <div class="details">
@@ -770,7 +528,7 @@
                                     <div class="single-post-list-wrap mb-0">
                                         <div class="media">
                                             <div class="media-left">
-                                                <img src="assets/img/post/list/3.png" alt="img">
+                                                <img src="{% static 'img/post/list/3.png' %}" alt="img">
                                             </div>
                                             <div class="media-body">
                                                 <div class="details">
@@ -807,118 +565,6 @@
         </div>
     </div>
 
-    <div class="footer-area bg-black pd-top-95">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="widget">
-                        <h5 class="widget-title">ABOUT US</h5>
-                        <div class="widget_about">
-                            <p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                aliqua. Quis ipsum ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel
-                                facilisis.</p>
-                            <ul class="social-area social-area-2 mt-4">
-                                <li><a class="facebook-icon" href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a class="twitter-icon" href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a class="youtube-icon" href="#"><i class="fa fa-youtube-play"></i></a></li>
-                                <li><a class="instagram-icon" href="#"><i class="fa fa-instagram"></i></a></li>
-                                <li><a class="google-icon" href="#"><i class="fa fa-google-plus"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="widget widget_tag_cloud">
-                        <h5 class="widget-title">TAGS</h5>
-                        <div class="tagcloud">
-                            <a href="#">Consectetur</a>
-                            <a href="#">Video</a>
-                            <a href="#">App</a>
-                            <a href="#">Food</a>
-                            <a href="#">Game</a>
-                            <a href="#">Internet</a>
-                            <a href="#">Phones</a>
-                            <a href="#">Development</a>
-                            <a href="#">Video</a>
-                            <a href="#">Game</a>
-                            <a href="#">Gadgets</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="widget">
-                        <h5 class="widget-title">CONTACTS</h5>
-                        <ul class="contact_info_list">
-                            <li><i class="fa fa-map-marker"></i> 829 Cabell Avenue Arlington, VA 22202</li>
-                            <li><i class="fa fa-phone"></i> +088 012121240</li>
-                            <li><i class="fa fa-envelope-o"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0f466169604f786a6d7c667b6a216c6062">[email&#160;protected]</a> <br> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7f2c0a0f0f100d0b3f121e1613511c1012">[email&#160;protected]</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="widget widget_recent_post">
-                        <h5 class="widget-title">POPULAR NEWS</h5>
-                        <div class="single-post-list-wrap style-white">
-                            <div class="media">
-                                <div class="media-left">
-                                    <img src="assets/img/post/list/1.png" alt="img">
-                                </div>
-                                <div class="media-body">
-                                    <div class="details">
-                                        <div class="post-meta-single">
-                                            <ul>
-                                                <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                            </ul>
-                                        </div>
-                                        <h6 class="title"><a href="#">Himachal Pradesh rules in order to allow tourists
-                                            </a></h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single-post-list-wrap style-white">
-                            <div class="media">
-                                <div class="media-left">
-                                    <img src="assets/img/post/list/2.png" alt="img">
-                                </div>
-                                <div class="media-body">
-                                    <div class="details">
-                                        <div class="post-meta-single">
-                                            <ul>
-                                                <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                            </ul>
-                                        </div>
-                                        <h6 class="title"><a href="#">Himachal Pradesh rules in order to allow tourists
-                                            </a></h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom text-center">
-                <ul class="widget_nav_menu">
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Terms & Conditions</a></li>
-                    <li><a href="#">rivacy Policy</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-                <p>Copyright ©2023 Nextpage</p>
-            </div>
-        </div>
-    </div>
 
-    <!-- back to top area start -->
-    <div class="back-to-top">
-        <span class="back-top"><i class="fa fa-angle-up"></i></span>
-    </div>
-    <!-- back to top area end -->
 
-    <!-- all plugins here -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/vendor.js"></script>
-    <!-- main js  -->
-    <script src="assets/js/main.js"></script>
-</body>
-
-</html>
+{% endblock body %}

@@ -1,5 +1,5 @@
 {% load static %}
-
+{% load blog_tag %}
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -11,8 +11,9 @@
     <title>NextPage - Blog, Magazine Html Template</title>
 
     <link rel= "stylesheet" href= "https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" >
 
-    <!-- favicon -->
+    
     <link rel=icon href="{% static 'img/favicon.png' %}" sizes="20x20" type="image/png">
 
     <!-- Stylesheet -->
@@ -56,8 +57,7 @@
                     </div>
                     <div class="col-lg-6 col-md-5 text-md-right text-center mt-2 mt-md-0">
                         <div class="topbar-social">
-                            <div class="topbar-date d-none d-lg-inline-block"><i class="fa fa-calendar"></i> Saturday,
-                                October 7</div>
+                            <div class="topbar-date d-none d-lg-inline-block"><i class="fa fa-calendar"></i>{% current_time %}</div>
                             <!-- <ul class="social-area social-area-2">
                                 <li><a class="facebook-icon" href="#"><i class="fa fa-facebook"></i></a></li>
                                 <li><a class="twitter-icon" href="#"><i class="fa fa-twitter"></i></a></li>
@@ -123,7 +123,7 @@
                             </ul>
                         </li>
                         <li class="current-menu-item">
-                            <a href="#">Blogs</a>
+                            <a href="{% url 'blog:index' %}">Blogs</a>
                         </li>
                     </ul>
                 </div>
@@ -183,6 +183,18 @@
 <!-- back to top area end -->
 
 <!-- all plugins here -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script>
+    // Check if there are messages or form errors and show Toastr notifications accordingly
+    $(document).ready(function(){
+        {% if messages %}
+            {% for message in messages %}
+                toastr.{{ message.tags }}('{{ message }}');
+            {% endfor %}
+        {% endif %}
+    });
+</script>
 <script src="{% static 'js/vendor.js' %}"></script>
 <!-- main js  -->
 <script src="{% static 'js/main.js' %}"></script>

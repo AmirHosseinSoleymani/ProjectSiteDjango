@@ -3,15 +3,16 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from taggit.managers import TaggableManager
 
+
 class Category(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255,unique=True)
 
     def __str__(self) -> str:
         return self.name
 
 
 class Post(models.Model):
-    title = models.CharField(max_length=111)
+    title = models.CharField(max_length=111,unique=True)
     content = models.TextField()
     counted_view = models.IntegerField(default=0)
     status = models.BooleanField(default=False)
@@ -22,6 +23,7 @@ class Post(models.Model):
     tags = TaggableManager()
     category = models.ManyToManyField(Category) #default can be null
     author = models.ForeignKey(User,on_delete=models.SET_NULL,null=True) #or CASECADE  
+    notifEmail = models.BooleanField(default=False)
     
     class Meta:
         ordering = ['created_date']
@@ -35,6 +37,8 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse("blog:blog-single", kwargs={'id':self.id})
+    
+
 
 
 class Comment(models.Model):

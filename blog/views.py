@@ -5,6 +5,27 @@ from blog.models import Post,Comment,Category
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 from blog.forms import CommentForm
 from django.contrib import messages
+from django.dispatch import receiver
+from django.core.mail import send_mail
+from django.db.models.signals import post_save
+from website.models import News
+
+
+
+@receiver(post_save, sender=Post)
+def send_email_to_users(sender, instance, **kwargs):
+    
+    if instance.status and (not instance.notifEmail) :
+        users_with_email = News.objects.all()
+        email_subject = 'یک پست جدید ایجاد شده است'
+        email_body = f'پست جدید با عنوان "{instance.title}" ایجاد شد. برای مشاهده به سایت مراجعه کنید: example.com'
+        post = Post.objects.get(id=instance.id)
+        post.notifEmail = True
+        post.save()
+        for user in users_with_email:
+            send_mail(email_subject, email_body, 'amir.h.slymni@gmail.com', [user.email]) #need internet connection
+
+
 
 def blogView(req,**kwargs):
     timeNow = timezone.now()
@@ -86,15 +107,6 @@ def blogSingleView(req,id):
     ctx = {'post' : post , 'next' : nextpost , 'prev' : prevpost , 'comments' : comments , 'form' : form}
     return render(req,'blog-details.html',ctx)
 
-# def blogCategory(req,cat_name):
-#     timeNow = timezone.now()
-#     posts = Post.objects.filter(status=True,published_date__lte=timeNow)
-#     posts = posts.filter(category__name = cat_name)
-
-#     ctx = {
-#         'Posts' : posts,
-#     }
-#     return render(req,'blog/blog-home.html',ctx)
 
 def blogSearch(req):
     # req.__dict__  --> django request objects and methodes showes
