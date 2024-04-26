@@ -1,6 +1,6 @@
 
 from django.utils import timezone
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404,redirect
 from blog.models import Post,Comment,Category
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 from blog.forms import CommentForm
@@ -35,7 +35,6 @@ def blogView(req,**kwargs):
     
     if kwargs.get('cat_name') :
         posts = posts.filter(category__name = kwargs['cat_name'])
-        return render(request=req,template_name='cat-fashion.html')
     
     if kwargs.get('author_uname'):
         posts = posts.filter(author__username=kwargs['author_uname'])
@@ -44,15 +43,20 @@ def blogView(req,**kwargs):
         posts = posts.filter(tags__name=kwargs['tag_name'])
 
 
-    # posts = Paginator(posts,1)
-    # try:
-    #     page_number = req.GET.get('page')
-    #     posts = posts.get_page(page_number)
+    if req.method == 'GET':
+        if get := req.GET.get('s'): #walrus in py
+            posts = posts.filter(content__contains=get)
 
-    # except PageNotAnInteger:
-    #     posts = posts.get_page(1)
-    # except EmptyPage:
-    #     posts = posts.get_page(1)
+
+    posts = Paginator(posts,4)
+    try:
+        page_number = req.GET.get('page')
+        posts = posts.get_page(page_number)
+
+    except PageNotAnInteger:
+        posts = posts.get_page(1)
+    except EmptyPage:
+        posts = posts.get_page(1)
 
     ctx = {
         'Posts' : posts,
@@ -78,7 +82,6 @@ def findNexPrevPosts(posts,post):
         prevpost = posts[index-1]
     return nextpost , prevpost
 
-
 def blogSingleView(req,id):
 
     if req.method == 'POST':
@@ -86,12 +89,12 @@ def blogSingleView(req,id):
         if form.is_valid():
             form.save()
             messages.add_message(req,messages.SUCCESS,'Your comment submited successfully')
+            return redirect(f'/blog/{id}')
         else:
             messages.add_message(req,messages.ERROR,'Your comment no submited OOPS!!')
+            return redirect(f'/blog/{id}')
 
             
-    #post = Post.objects.get(id=id)
-    # post = get_object_or_404(Post,pk=id,status=1)
     timeNow = timezone.now()
     posts = Post.objects.filter(status=True,published_date__lte=timeNow)
     post = get_object_or_404(posts,pk=id,)
@@ -108,14 +111,14 @@ def blogSingleView(req,id):
     return render(req,'blog-details.html',ctx)
 
 
-def blogSearch(req):
-    # req.__dict__  --> django request objects and methodes showes
+# def blogSearch(req):
+#     # req.__dict__  --> django request objects and methodes showes
+#     timeNow = timezone.now()
+#     posts = Post.objects.filter(status=True,published_date__lte=timeNow)
 
-    posts = Post.objects.filter(status=True) 
-
-    if req.method == 'GET':
-        if get := req.GET.get('s'): #walrus in py
-            posts = posts.filter(content__contains=get)
-    ctx = {'Posts' : posts}
-    return render(req,'blog/blog-home.html',ctx)
+#     if req.method == 'GET':
+#         if get := req.GET.get('s'): #walrus in py
+#             posts = posts.filter(content__contains=get)
+#     ctx = {'posts' : posts}
+#     return render(req,'cat_tag_author.html',ctx)
     

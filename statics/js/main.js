@@ -192,8 +192,8 @@
         /*-----------------
             preloader
         ------------------*/
-        var preLoder = $("#preloader");
-        preLoder.fadeOut(0);
+        // var preLoder = $("#preloader");
+        // preLoder.fadeOut(0);
 
         /*-----------------
             back to top
@@ -204,10 +204,10 @@
         /*---------------------
             Cancel Preloader
         ----------------------*/
-        $(document).on('click', '.cancel-preloader a', function (e) {
-            e.preventDefault();
-            $("#preloader").fadeOut(2000);
-        });
+        // $(document).on('click', '.cancel-preloader a', function (e) {
+        //     e.preventDefault();
+        //     $("#preloader").fadeOut(2000);
+        // });
 
     });
 
@@ -217,27 +217,21 @@
 
 
 
-// اضافه کردن event listener برای کلیک بر روی هر تب
 document.querySelectorAll('.nav-link').forEach(tab => {
     tab.addEventListener('click', function () {
-        // حذف کلاس 'active' از همه تب ها
         document.querySelectorAll('.nav-link').forEach(tab => {
             tab.classList.remove('active');
-        });
-        // اضافه کردن کلاس 'active' به تبی که کاربر بر روی آن کلیک کرده است
+        })
         this.classList.add('active');
 
-        // مخفی کردن همه محتوای تب ها
         document.querySelectorAll('.tab-pane').forEach(tabContent => {
             tabContent.classList.remove('show', 'active');
         });
-        // نمایش محتوای مربوط به تبی که کاربر بر روی آن کلیک کرده است
         const tabContentId = this.getAttribute('href').substring(1);
         document.getElementById(tabContentId).classList.add('show', 'active');
     });
 });
 
-// اضافه کردن کلاس 'show' و 'active' به تب اول به طور پیش‌فرض
 window.addEventListener('load', function () {
     const firstTab = document.querySelector('.nav-link');
     firstTab.classList.add('active');

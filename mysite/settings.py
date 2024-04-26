@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'website',
     'blog',
     'account',
-    'taggit'
+    'taggit',
+    'compressor',
 ]
 
 MIDDLEWARE = [
@@ -145,3 +146,15 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'amir.h.slymni@gmail.com'
 EMAIL_HOST_PASSWORD = 'ppftdsbteizashpi'
 EMAIL_PORT = 587
+
+
+
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+
+    # Add this
+    'compressor.finders.CompressorFinder',
+)
+

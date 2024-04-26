@@ -32,7 +32,7 @@
                         <div class="single-blog-inner m-0">
                             <div class="single-post-wrap style-overlay">
                                 <div class="thumb">
-                                    <img src="{% static 'img/blog/4.png' %}" alt="img">
+                                    <img src="{{post.image.url}}" alt="img">
                                 </div>
                                 <div class="details pb-4">
                                     <div class="post-meta-single mb-2">
@@ -90,13 +90,8 @@
                             </div>
                             <div class="author-area">
                                 <div class="media">
-                                    <img src="{% static 'img/author/1.png' %}" alt="img">
                                     <div class="media-body align-self-center">
-                                        <h4>Nathan George</h4>
-                                        <p>No one rejects, dislikes, or avoids pleasure itself, because it is pleasure,
-                                            but because those who do not know how to pursue pleasure rationally
-                                            encounter consequences that aextremely painful. Nor again is there anyone
-                                            who loves</p>
+                                        <h4>{{post.author.get_full_name}}</h4>
                                     </div>
                                 </div>
                             </div>
@@ -106,78 +101,50 @@
                                 <h5 class="mb-0">Related Post</h5>
                             </div>
                             <div class="row justify-content-center">
+                                {% relatedPost post.id as relposts %}
+                                {% for relpost in relposts  %}
                                 <div class="col-lg-4 col-md-6">
                                     <div class="single-post-wrap">
                                         <div class="thumb">
-                                            <img src="{% static 'img/post/19.png' %}" alt="img">
-                                            <a class="tag-base tag-red" href="#">Tech</a>
+                                            <img src="{{relpost.image.url}}" alt="img">
+                                                {% for cat in relpost.category.all  %}
+                                                <a class="tag-base tag-blue" href="#">{{cat.name}}</a>
+                                                {% endfor %}
                                         </div>
                                         <div class="details">
                                             <div class="post-meta-single">
                                                 <ul>
-                                                    <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                                    <li><i class="fa fa-user"></i>08.22.2023</li>
+                                                    <li><i class="fa fa-clock-o"></i>{{relpost.published_date}}</li>
+                                                    <li><i class="fa fa-user"></i>{{relpost.author.get_full_name}}</li>
                                                 </ul>
                                             </div>
-                                            <h6 class="title mt-2"><a href="#">Lifting Weights Makes Your Nervous</a>
+                                            <h6 class="title mt-2"><a href="#">{{relpost.title}}</a>
                                             </h6>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-md-6">
-                                    <div class="single-post-wrap">
-                                        <div class="thumb">
-                                            <img src="{% static 'img/post/20.png' %}" alt="img">
-                                            <a class="tag-base tag-blue" href="#">Tech</a>
-                                        </div>
-                                        <div class="details">
-                                            <div class="post-meta-single">
-                                                <ul>
-                                                    <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                                    <li><i class="fa fa-user"></i>08.22.2023</li>
-                                                </ul>
-                                            </div>
-                                            <h6 class="title mt-2"><a href="#">New, Remote Weight-Loss Method </a></h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6">
-                                    <div class="single-post-wrap">
-                                        <div class="thumb">
-                                            <img src="{% static 'img/post/21.png' %}" alt="img">
-                                            <a class="tag-base tag-light-green" href="#">Tech</a>
-                                        </div>
-                                        <div class="details">
-                                            <div class="post-meta-single">
-                                                <ul>
-                                                    <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                                    <li><i class="fa fa-user"></i>08.22.2023</li>
-                                                </ul>
-                                            </div>
-                                            <h6 class="title mt-2"><a href="#">Social Connection Boosts Fitness App </a>
-                                            </h6>
-                                        </div>
-                                    </div>
-                                </div>
+                                {% endfor %}
                             </div>
                         </div>
                         <div class="blog-comment">
                             <div class="section-title">
-                                <h4>3 Comments</h4>
+                                <h4>{{comments|length}} Comments</h4>
                             </div>
+                            {% for comment in comments  %}
                             <div class="media">
                                 <a href="#">
-                                    <img src="{% static 'img/author/2.png' %}" alt="comment">
+                                    <img src="{% static 'img/author/3.png' %}" alt="comment">
                                 </a>
                                 <div class="media-body">
-                                    <h5><a href="#">John F. Medina</a></h5>
-                                    <span class="date">25 July 2023</span>
-                                    <p>But I must explain to you how all this mistaken idea of denouncing pleasure and
-                                        praising pawas born and I will give you a complete account</p>
-                                    <a href="#">Reply <i class="la la-arrow-right"></i></a>
+                                    <h5><a href="#">{{comment.name}}</a></h5>
+                                    <span class="date">{{comment.published_date}}</span>
+                                    <p>{{comment.message}}</p>
+                                    <!-- <a href="#">Reply <i class="la la-arrow-right"></i></a> -->
                                 </div>
-                            </div>
-                            <div class="media nesting">
+                            </div>                              
+                            {% endfor %}
+
+                            <!-- <div class="media nesting">
                                 <a href="#">
                                     <img src="{% static 'img/author/3.png' %}" alt="comment">
                                 </a>
@@ -188,30 +155,19 @@
                                         is pain, but because occasionally circumstances occur in which</p>
                                     <a href="#">Reply <i class="la la-arrow-right"></i></a>
                                 </div>
-                            </div>
-                            <div class="media">
-                                <a href="#">
-                                    <img src="{% static 'img/author/2.png' %}" alt="comment">
-                                </a>
-                                <div class="media-body">
-                                    <h5><a href="#">Richard B. Zellmer</a></h5>
-                                    <span class="date">25 July 2023</span>
-                                    <p>Harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum
-                                        soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime
-                                    </p>
-                                    <a href="#">Reply <i class="la la-arrow-right"></i></a>
-                                </div>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="comment-form">
                             <div class="section-title mb-0">
                                 <h4 class="mb-0">Leave A Comment</h4>
                             </div>
-                            <form class="contact-form-wrap">
+                                <form class="contact-form-wrap" method="post" action="{% url 'blog:blog-single' id=post.id %}">
+                                    <input type="hidden" name="post" value={{post.id}}>
+                                {% csrf_token %}
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-12">
                                         <div class="single-input-wrap input-group">
-                                            <input type="text" class="form-control" placeholder="Your Full Name">
+                                            <input type="text" class="form-control" placeholder="Your Full Name" name="name">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text"><i class="fa fa-user"></i></div>
                                             </div>
@@ -219,7 +175,7 @@
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-12">
                                         <div class="single-input-wrap input-group">
-                                            <input type="text" class="form-control" placeholder="Your Email">
+                                            <input type="text" class="form-control" placeholder="Your Email" name="email">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text"><i class="fa fa-envelope"></i></div>
                                             </div>
@@ -227,7 +183,7 @@
                                     </div>
                                     <div class="col-12">
                                         <div class="single-input-wrap message input-group">
-                                            <textarea class="form-control" rows="4" name="note"
+                                            <textarea class="form-control" rows="4" name="message"
                                                 placeholder="Write Message"></textarea>
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text"><i class="fa fa-pencil"></i></div>
@@ -257,307 +213,6 @@
                                 </div>
                                 {% endfor %}
                             </div>
-                        </div>
-                        <div class="widget widget-add">
-                            <div class="add">
-                                <img class="w-100" src="{% static 'img/add/3.png' %}" alt="img">
-                            </div>
-                        </div>
-                        <div class="widget widget-social">
-                            <h6 class="widget-title">Join to Us</h6>
-                            <ul class="social-area social-area-2">
-                                <li><a class="facebook-icon" href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a class="twitter-icon" href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a class="youtube-icon" href="#"><i class="fa fa-youtube-play"></i></a></li>
-                                <li><a class="instagram-icon" href="#"><i class="fa fa-instagram"></i></a></li>
-                                <li><a class="google-icon" href="#"><i class="fa fa-google-plus"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="widget">
-                            <h6 class="widget-title">Category</h6>
-                            <div class="post-slider owl-carousel">
-                                <div class="item">
-                                    <div class="trending-post">
-                                        <div class="single-post-wrap style-overlay">
-                                            <div class="thumb">
-                                                <img src="{% static 'img/post/5.png' %}" alt="img">
-                                            </div>
-                                            <div class="details">
-                                                <div class="post-meta-single">
-                                                    <p><i class="fa fa-clock-o"></i>December 26, 2018</p>
-                                                </div>
-                                                <h6 class="title"><a href="#">The FAA will test drone </a></h6>
-                                            </div>
-                                        </div>
-                                        <div class="single-post-wrap style-overlay">
-                                            <div class="thumb">
-                                                <img src="{% static 'img/post/6.png' %}" alt="img">
-                                            </div>
-                                            <div class="details">
-                                                <div class="post-meta-single">
-                                                    <p><i class="fa fa-clock-o"></i>December 26, 2018</p>
-                                                </div>
-                                                <h6 class="title"><a href="#">Flight schedule and quarantine</a></h6>
-                                            </div>
-                                        </div>
-                                        <div class="single-post-wrap style-overlay mb-0">
-                                            <div class="thumb">
-                                                <img src="{% static 'img/post/7.png' %}" alt="img">
-                                            </div>
-                                            <div class="details">
-                                                <div class="post-meta-single">
-                                                    <p><i class="fa fa-clock-o"></i>December 26, 2018</p>
-                                                </div>
-                                                <h6 class="title"><a href="#">Indore bags cleanest city</a></h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="trending-post">
-                                        <div class="single-post-wrap style-overlay">
-                                            <div class="thumb">
-                                                <img src="{% static 'img/post/5.png' %}" alt="img">
-                                            </div>
-                                            <div class="details">
-                                                <div class="post-meta-single">
-                                                    <p><i class="fa fa-clock-o"></i>December 26, 2018</p>
-                                                </div>
-                                                <h6 class="title"><a href="#">The FAA will test drone </a></h6>
-                                            </div>
-                                        </div>
-                                        <div class="single-post-wrap style-overlay">
-                                            <div class="thumb">
-                                                <img src="{% static 'img/post/6.png' %}" alt="img">
-                                            </div>
-                                            <div class="details">
-                                                <div class="post-meta-single">
-                                                    <p><i class="fa fa-clock-o"></i>December 26, 2018</p>
-                                                </div>
-                                                <h6 class="title"><a href="#">Flight schedule and quarantine</a></h6>
-                                            </div>
-                                        </div>
-                                        <div class="single-post-wrap style-overlay mb-0">
-                                            <div class="thumb">
-                                                <img src="{% static 'img/post/7.png' %}" alt="img">
-                                            </div>
-                                            <div class="details">
-                                                <div class="post-meta-single">
-                                                    <p><i class="fa fa-clock-o"></i>December 26, 2018</p>
-                                                </div>
-                                                <h6 class="title"><a href="#">Indore bags cleanest city</a></h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="widget">
-                            <div class="nxp-tab-inner nxp-tab-post-two mb-4">
-                                <ul class="nav nav-tabs" id="nx1" role="tablist">
-                                    <li class="nav-item" role="presentation">
-                                        <a class="nav-link active" id="nx1-tab-1" data-toggle="pill" href="#nx1-tabs-1"
-                                            role="tab" aria-selected="true">
-                                            Recent
-                                        </a>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
-                                        <a class="nav-link" id="nx1-tab-2" data-toggle="pill" href="#nx1-tabs-2"
-                                            role="tab" aria-selected="false">
-                                            Populer
-                                        </a>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
-                                        <a class="nav-link" id="nx1-tab-3" data-toggle="pill" href="#nx1-tabs-3"
-                                            role="tab" aria-selected="false">
-                                            Comment
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="tab-content" id="nx1-content">
-                                <div class="tab-pane fade show active" id="nx1-tabs-1" role="tabpanel">
-                                    <div class="single-post-list-wrap">
-                                        <div class="media">
-                                            <div class="media-left">
-                                                <img src="{% static 'img/post/list/1.png' %}" alt="img">
-                                            </div>
-                                            <div class="media-body">
-                                                <div class="details">
-                                                    <div class="post-meta-single">
-                                                        <ul>
-                                                            <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                                        </ul>
-                                                    </div>
-                                                    <h6 class="title"><a href="#">Himachal Pradesh rules in order to
-                                                            allow tourists </a></h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="single-post-list-wrap">
-                                        <div class="media">
-                                            <div class="media-left">
-                                                <img src="{% static 'img/post/list/2.png' %}" alt="img">
-                                            </div>
-                                            <div class="media-body">
-                                                <div class="details">
-                                                    <div class="post-meta-single">
-                                                        <ul>
-                                                            <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                                        </ul>
-                                                    </div>
-                                                    <h6 class="title"><a href="#">Online registration, booking for
-                                                            Vaishno Devi </a></h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="single-post-list-wrap mb-0">
-                                        <div class="media">
-                                            <div class="media-left">
-                                                <img src="{% static 'img/post/list/3.png' %}" alt="img">
-                                            </div>
-                                            <div class="media-body">
-                                                <div class="details">
-                                                    <div class="post-meta-single">
-                                                        <ul>
-                                                            <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                                        </ul>
-                                                    </div>
-                                                    <h6 class="title"><a href="#">Detecting technologies in airports
-                                                            this year</a></h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="nx1-tabs-2" role="tabpanel">
-                                    <div class="single-post-list-wrap">
-                                        <div class="media">
-                                            <div class="media-left">
-                                                <img src="{% static 'img/post/list/2.png' %}" alt="img">
-                                            </div>
-                                            <div class="media-body">
-                                                <div class="details">
-                                                    <div class="post-meta-single">
-                                                        <ul>
-                                                            <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                                        </ul>
-                                                    </div>
-                                                    <h6 class="title"><a href="#">Online registration, booking for
-                                                            Vaishno Devi </a></h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="single-post-list-wrap">
-                                        <div class="media">
-                                            <div class="media-left">
-                                                <img src="{% static 'img/post/list/3.png' %}" alt="img">
-                                            </div>
-                                            <div class="media-body">
-                                                <div class="details">
-                                                    <div class="post-meta-single">
-                                                        <ul>
-                                                            <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                                        </ul>
-                                                    </div>
-                                                    <h6 class="title"><a href="#">Detecting technologies in airports
-                                                            this year</a></h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="single-post-list-wrap mb-0">
-                                        <div class="media">
-                                            <div class="media-left">
-                                                <img src="{% static 'img/post/list/3.png' %}" alt="img">
-                                            </div>
-                                            <div class="media-body">
-                                                <div class="details">
-                                                    <div class="post-meta-single">
-                                                        <ul>
-                                                            <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                                        </ul>
-                                                    </div>
-                                                    <h6 class="title"><a href="#">Detecting technologies in airports
-                                                            this year</a></h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="nx1-tabs-3" role="tabpanel">
-                                    <div class="single-post-list-wrap">
-                                        <div class="media">
-                                            <div class="media-left">
-                                                <img src="{% static 'img/post/list/2.png' %}" alt="img">
-                                            </div>
-                                            <div class="media-body">
-                                                <div class="details">
-                                                    <div class="post-meta-single">
-                                                        <ul>
-                                                            <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                                        </ul>
-                                                    </div>
-                                                    <h6 class="title"><a href="#">Online registration, booking for
-                                                            Vaishno Devi </a></h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="single-post-list-wrap">
-                                        <div class="media">
-                                            <div class="media-left">
-                                                <img src="{% static 'img/post/list/2.png' %}" alt="img">
-                                            </div>
-                                            <div class="media-body">
-                                                <div class="details">
-                                                    <div class="post-meta-single">
-                                                        <ul>
-                                                            <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                                        </ul>
-                                                    </div>
-                                                    <h6 class="title"><a href="#">Online registration, booking for
-                                                            Vaishno Devi </a></h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="single-post-list-wrap mb-0">
-                                        <div class="media">
-                                            <div class="media-left">
-                                                <img src="{% static 'img/post/list/3.png' %}" alt="img">
-                                            </div>
-                                            <div class="media-body">
-                                                <div class="details">
-                                                    <div class="post-meta-single">
-                                                        <ul>
-                                                            <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                                        </ul>
-                                                    </div>
-                                                    <h6 class="title"><a href="#">Detecting technologies in airports
-                                                            this year</a></h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="widget">
-                            <form class="single-newsletter-inner bg-blue text-center">
-                                <h5>Newsletter</h5>
-                                <p>Stay Updated on all that's new add noteworthy</p>
-                                <div class="single-input-inner">
-                                    <input type="text" placeholder="Enter Your Name">
-                                </div>
-                                <div class="single-input-inner">
-                                    <input type="text" placeholder="Enter Your Email">
-                                </div>
-                                <a class="btn btn-white w-100" href="#">Subscribe Now</a>
-                            </form>
                         </div>
                     </div>
                 </div>
