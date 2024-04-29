@@ -26,6 +26,8 @@ SECRET_KEY = 'django-insecure-03n6+4xlmi$iw65a6228zu^pznk2@p5=bk2xl+9xdz4$%9e1m_
 DEBUG = True
 
 ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['127.0.0.1']
+
 
 
 # Application definition
@@ -36,12 +38,17 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sites',
     'django.contrib.staticfiles',
+    'django.contrib.sitemaps',
+    'django.contrib.humanize',
     'website',
     'blog',
     'account',
     'taggit',
     'compressor',
+    'captcha',
+    'robots',
 ]
 
 MIDDLEWARE = [
@@ -52,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'mysite.htaccess.Htaccess'
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -158,3 +166,20 @@ STATICFILES_FINDERS = (
     'compressor.finders.CompressorFinder',
 )
 
+
+COMPRESS_ENABLED = True
+COMPRESS_CSS_HASHING_METHOD = 'content'
+COMPRESS_FILTERS = {
+    'css':[
+        'compressor.filters.css_default.CssAbsoluteFilter',
+        'compressor.filters.cssmin.rCSSMinFilter',
+    ],
+    'js':[
+        'compressor.filters.jsmin.JSMinFilter',
+    ]
+}
+HTML_MINIFY = True
+KEEP_COMMENTS_ON_MINIFYING = True
+
+
+SITE_ID = 2

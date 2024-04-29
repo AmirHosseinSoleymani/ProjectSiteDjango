@@ -2,6 +2,7 @@
 
 {% load static %}
 {% load blog_tag %}
+{% load humanize %}
 {% block body %}
 
 <!--page-title area-->
@@ -12,7 +13,7 @@
                     <div class="breadcrumb-inner">
                         <h5 class="page-title">Blog</h5>
                         <ul class="page-list">
-                            <li><a href="index.html">Home</a></li>
+                            <li><a href="/">Home</a></li>
                             <li>Blog</li>
                         </ul>
                     </div>
@@ -34,21 +35,25 @@
                             <div class="single-blog-details">
                                 <div class="meta">
                                     <span class="author">
+                                        
                                         <i class="fa fa-user"></i>
-                                        {{post.author.get_full_name}}
+                                        <a href="{% url 'blog:author' author_uname=post.author %}">
+                                            {{post.author.get_full_name}}
+                                        </a>
+                                        
                                     </span>
                                     <span class="date">
                                         <i class="fa fa-calendar"></i>
-                                        {{post.published_date}}
+                                        {{post.published_date|naturaltime}}
                                     </span>
                                     <span class="comments">
                                         <i class="fa fa-comments"></i>
-                                        Comments (05)
+                                        Comments ({% numCatWithPostId post.id %})
                                     </span>
                                 </div>
-                                <h3><a href="blog-details.html">{{post.title}}</a></h3>
+                                <h3><a href="{% url 'blog:blog-single' id=post.id %}">{{post.title}}</a></h3>
                                 <p>{{post.content|truncatechars:111}}</p>
-                                <a class="btn btn-base" href="blog-details.html">Learn More</a>
+                                <a class="btn btn-base" href="{% url 'blog:blog-single' id=post.id %}">Learn More</a>
                             </div>
                         </div>                      
                     {% endfor %}
@@ -83,7 +88,7 @@
                                 <div class="col-sm-6">
                                     <div class="single-category-inner">
                                         <img src="{% static 'img/category/9.png' %}" alt="img">
-                                        <a class="tag-base tag-blue" href="cat-tech.html">{{cat.name}}</a>
+                                        <a class="tag-base tag-blue" href="{% url 'blog:category' cat_name=cat.name %}">{{cat.name}}</a>
                                     </div>
                                 </div>
                                 {% endfor %}
@@ -111,9 +116,9 @@
                                                 </div>
                                                 <div class="details">
                                                     <div class="post-meta-single">
-                                                        <p><i class="fa fa-clock-o"></i>{{post.published_date}}</p>
+                                                        <p><i class="fa fa-clock-o"></i>{{post.published_date|naturaltime}}</p>
                                                     </div>
-                                                    <h6 class="title"><a href="blog-details.html">{{post.title}}
+                                                    <h6 class="title"><a href="{% url 'blog:blog-single' id=post.id %}">{{post.title}}
                                                         </a></h6>
                                                 </div>
                                             </div>
@@ -158,10 +163,10 @@
                                                     <div class="details">
                                                         <div class="post-meta-single">
                                                             <ul>
-                                                                <li><i class="fa fa-clock-o"></i>{{post.published_date}}</li>
+                                                                <li><i class="fa fa-clock-o"></i>{{post.published_date|naturalday}}</li>
                                                             </ul>
                                                         </div>
-                                                        <h6 class="title"><a href="blog-details.html">{{post.title}}</a></h6>
+                                                        <h6 class="title"><a href="{% url 'blog:blog-single' id=post.id %}">{{post.title}}</a></h6>
                                                     </div>
                                                 </div>
                                             </div>
@@ -179,10 +184,10 @@
                                                 <div class="details">
                                                     <div class="post-meta-single">
                                                         <ul>
-                                                            <li><i class="fa fa-clock-o"></i>{{post.published_date}}</li>
+                                                            <li><i class="fa fa-clock-o"></i>{{post.published_date|naturalday}}</li>
                                                         </ul>
                                                     </div>
-                                                    <h6 class="title"><a href="blog-details.html">{{post.title}}</a></h6>
+                                                    <h6 class="title"><a href="{% url 'blog:blog-single' id=post.id %}">{{post.title}}</a></h6>
                                                 </div>
                                             </div>
                                         </div>
@@ -190,60 +195,30 @@
                                 {% endfor %}
                                 </div>
                                 <div class="tab-pane fade" id="nx1-tabs-3" role="tabpanel">
+                                    {% lastComments as comments %}
+                                    {% for com in comments %}
                                     <div class="single-post-list-wrap">
                                         <div class="media">
                                             <div class="media-left">
-                                                <img src="{% static 'img/post/list/2.png' %}" alt="img">
+                                                <a href="{% url 'blog:blog-single' id=com.post.id %}">
+                                                    <img src="{{com.post.image.url}}" alt="img">
+                                                </a>
+                                                
                                             </div>
                                             <div class="media-body">
                                                 <div class="details">
                                                     <div class="post-meta-single">
                                                         <ul>
-                                                            <li><i class="fa fa-clock-o"></i>08.22.2023</li>
+                                                            <li><i class="fa fa-clock-o"></i>{{com.created_date|naturaltime}}</li>
                                                         </ul>
                                                     </div>
-                                                    <h6 class="title"><a href="blog-details.html">Online registration,
-                                                            booking for Vaishno Devi </a></h6>
+                                                    <h6 class="title mt-2">{{com.name}}</h6>
+                                                    <p>{{com.message}} </p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="single-post-list-wrap">
-                                        <div class="media">
-                                            <div class="media-left">
-                                                <img src="{% static 'img/post/list/2.png' %}" alt="img">
-                                            </div>
-                                            <div class="media-body">
-                                                <div class="details">
-                                                    <div class="post-meta-single">
-                                                        <ul>
-                                                            <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                                        </ul>
-                                                    </div>
-                                                    <h6 class="title"><a href="blog-details.html">Online registration,
-                                                            booking for Vaishno Devi </a></h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="single-post-list-wrap mb-0">
-                                        <div class="media">
-                                            <div class="media-left">
-                                                <img src="{% static 'img/post/list/3.png' %}" alt="img">
-                                            </div>
-                                            <div class="media-body">
-                                                <div class="details">
-                                                    <div class="post-meta-single">
-                                                        <ul>
-                                                            <li><i class="fa fa-clock-o"></i>08.22.2023</li>
-                                                        </ul>
-                                                    </div>
-                                                    <h6 class="title"><a href="blog-details.html">Detecting technologies
-                                                            in airports this year</a></h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    {% endfor %}
                                 </div>
                             </div>
                         </div>

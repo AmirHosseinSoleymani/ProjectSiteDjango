@@ -32,7 +32,9 @@ urlpatterns = [
     path('account/',include('account.urls')),
     path('',include('website.urls')),
     path('blog/',include('blog.urls')),
-    # path('sitemap.xml',sitemap,{'sitemaps': sitemaps},name='django.contrib.sitemaps.views.sitemap'),
+    path('sitemap.xml',sitemap,{'sitemaps': sitemaps},name='django.contrib.sitemaps.views.sitemap'),
+     path('captcha/', include('captcha.urls')),
+      path('robots.txt',include('robots.urls')),
 
     # path('robots.txt', include('robots.urls')),
 ]

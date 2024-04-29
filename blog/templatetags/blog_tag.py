@@ -14,6 +14,13 @@ def get_posts_by_category(category_id):
 
 
 @register.simple_tag
+def numCatWithPostId(id):
+    comments = Comment.objects.filter(post=id)
+    num = comments.__len__()
+    return num
+
+
+@register.simple_tag
 def allCategories():
     cats = Category.objects.all()
     return cats
@@ -35,3 +42,8 @@ def relatedPost(idx):
     relposts = list(set(relposts))
     random_posts = random.sample(relposts, 3)
     return random_posts
+
+@register.simple_tag()
+def lastComments(num=4):
+    comments = Comment.objects.filter(approved=True).order_by('-created_date')[:num]
+    return comments

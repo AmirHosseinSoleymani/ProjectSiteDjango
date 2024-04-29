@@ -76,7 +76,7 @@
                 <div class="row">
                     <div class="col-xl-6 col-lg-5 align-self-center">
                         <div class="logo text-md-left text-center">
-                            <a class="main-logo" href="index.html"><img src="{% static 'img/logo-2.png' %}" alt="img"></a>
+                            <a class="main-logo" href="/"><img src="{% static 'img/logo-2.png' %}" alt="img"></a>
                         </div>
                     </div>
                     <!-- <div class="col-xl-6 col-lg-7 text-md-right text-center">
@@ -94,7 +94,7 @@
             <div class="container nav-container">
                 <div class="responsive-mobile-menu">
                     <div class="logo d-lg-none d-block">
-                        <a class="main-logo" href="index.html"><img src="{% static 'img/logo.png' %}" alt="img"></a>
+                        <a class="main-logo" href="/"><img src="{% static 'img/logo.png' %}" alt="img"></a>
                     </div>
                     <button class="menu toggle-btn d-block d-lg-none" data-target="#nextpage_main_menu"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -113,11 +113,10 @@
                         <li class="menu-item-has-children current-menu-item">
                             <a href="#">Category</a>
                             <ul class="sub-menu">
-                                <li><a href="cat-tech.html">Tech</a></li>
-                                <li><a href="cat-sports.html">Sports</a></li>
-                                <li><a href="cat-lifestyle.html">Lifestyle</a></li>
-                                <li><a href="cat-fashion.html">Fashion</a></li>
-                                <li><a href="cat-food.html">Food <span>New</span></a></li>
+                                {% allCategories as cates %}
+                                {% for cat in cates  %}
+                                <li><a href="{% url 'blog:category' cat_name=cat.name %}">{{cat.name}}</a></li>
+                                {% endfor %}
                             </ul>
                         </li>
                         <li class="current-menu-item">
@@ -156,21 +155,8 @@
                 <li><a class="instagram-icon" href="#"><i class="fa fa-instagram"></i></a></li>
                 <li><a class="google-icon" href="#"><i class="fa fa-google-plus"></i></a></li>
             </ul>
-            <ul class="widget_nav_menu">
-                <li><a href="#">Entertainment</a></li>
-                <li><a href="#">Politics</a></li>
-                <li><a href="#">Fashion</a></li>
-                <li><a href="#">Tech</a></li>
-                <li><a href="#">Shop</a></li>
-            </ul>
         </div>
         <div class="footer-bottom text-center">
-            <ul class="widget_nav_menu">
-                <li><a href="#">About</a></li>
-                <li><a href="#">Terms & Conditions</a></li>
-                <li><a href="#">Rivacy Policy</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
             <p>Copyright ©2023 Nextpage</p>
         </div>
     </div>
