@@ -40,7 +40,11 @@ def relatedPost(idx):
     categories = post.category.all()
     relposts = Post.objects.filter(category__in=categories, status=True, published_date__lte=time_now).exclude(id=idx)
     relposts = list(set(relposts))
-    random_posts = random.sample(relposts, 3)
+    if len(relposts) >= 3 :
+        random_posts = random.sample(relposts, 3)
+    else:
+        random_posts = random.sample(relposts, 1)
+    
     return random_posts
 
 @register.simple_tag()

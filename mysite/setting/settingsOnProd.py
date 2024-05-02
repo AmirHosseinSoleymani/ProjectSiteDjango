@@ -6,7 +6,6 @@ from mysite.settings import *
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-03n6+4xlmi$iw65a6228zu^pznk2@p5=bk2xl+9xdz4$%9e1m_'
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
@@ -14,7 +13,7 @@ ALLOWED_HOSTS = ['bookovie.ir','www.bookovie.ir']
 
 
 #sites framework
-SITE_ID = 3
+SITE_ID = 4
 
 # INSTALLED_APPS = []
 
@@ -27,15 +26,15 @@ DATABASES = {
     'default': {  
         'ENGINE': 'django.db.backends.mysql',  
         'NAME': 'bookovie_site',  
-        'USER': 'bookovie_site',  
-        'PASSWORD': 'N&v80IE2zDDv',  
+        'USER': 'bookovie_admin',  
+        'PASSWORD': 'aAx7S{xpF,R~',  
         'HOST': '127.0.0.1',  
         'PORT': '3306',   
     }  
 }  
 
-STATIC_ROOT = BASE_DIR / 'static'
-MEDIA_ROOT = BASE_DIR / 'media'
+STATIC_ROOT = '/home/bookovie/public_html/static'
+MEDIA_ROOT = '/home/bookovie/public_html/media'
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
@@ -47,5 +46,5 @@ STATICFILES_DIRS = [
 
 
 
+CSRF_COOKIE_SECURE = False  
 
-CSRF_COOKIE_SECURE =True
