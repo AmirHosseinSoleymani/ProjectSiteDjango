@@ -126,9 +126,15 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'amir.h.slymni@gmail.com'
-EMAIL_HOST_PASSWORD = 'ppftdsbteizashpi'
+EMAIL_HOST_PASSWORD = 'jjqsawfmuybhmntg'
 EMAIL_PORT = 587
 
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'mail.bookovie.ir'
+# EMAIL_USE_TLS = True
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = 'bkvsite@bookovie.ir'
+# EMAIL_HOST_PASSWORD = 'I]NvBXfP0h&5'
 
 
 
